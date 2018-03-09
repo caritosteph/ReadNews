@@ -1,2 +1,1 @@
-# ReadNews
-ReadNews Project
+# ReadNews Project
