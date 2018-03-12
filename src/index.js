@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './components/App/App';
 import theme from './config/theme';
 import store from './config/store';
-
+import routes from './config/routes';
 
 const root = document.getElementById('root');
 
