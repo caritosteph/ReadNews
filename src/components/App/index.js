@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Button from 'material-ui/Button';
 import Routes from '../../config/routes';
-import Dashboard from '../Dashboard';
+import Header from '../common/Header';
 
 class App extends Component {
   render() {
     return (
-      <Routes />
+      <Fragment>
+        <Header />
+        <Routes />
+      </Fragment>
     );
   }
 }

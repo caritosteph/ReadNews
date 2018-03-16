@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import Reboot from 'material-ui/Reboot';
+import CssBaseline from 'material-ui/CssBaseline';
 import { MuiThemeProvider } from 'material-ui/styles';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
@@ -14,6 +14,7 @@ const root = document.getElementById('root');
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider theme={theme}>
+        <CssBaseline />
         <App />
       </MuiThemeProvider>
   </Provider>
