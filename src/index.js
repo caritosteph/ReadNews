@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './components/App';
 import theme from './config/theme';
 import store from './config/store';
-import routes from './config/routes';
+import './index.css';
 
 const root = document.getElementById('root');
 
@@ -16,7 +16,7 @@ ReactDOM.render(
     <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <App />
-      </MuiThemeProvider>
+    </MuiThemeProvider>
   </Provider>
   , root);
 
