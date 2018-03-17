@@ -6,8 +6,7 @@ const Routes = () => (
     <BrowserRouter>
       <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route path="/categories" component={Dashboard}/>
-          <Route path="/:category/posts" component={Dashboard} />
+          <Route path="/:category" component={Dashboard} />
           <Route path="/posts"  component={Dashboard} />
           <Route path="/posts/:id" component={Dashboard}/>
           <Route path="/posts/:id/comments" component={Dashboard} />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Tabs, { Tab } from 'material-ui/Tabs';
@@ -28,16 +29,10 @@ class Dashboard extends Component {
     const { classes } = this.props;
 
     return (
-      <Grid container spacing={0}>
-          <Grid item xs={2}
-                classes={{
-                  typeItem: classes.gridCategories
-                }}>
-            <Grid item classes={{
-                    typeItem: classes.categoryTitle
-                  }}>
-              <Typography variant="body1"
-                          color="secondary">
+      <Grid container spacing={0} className="full-height">
+          <Grid item xs={2} classes={{ typeItem: classes.gridCategories }}>
+            <Grid item classes={{ typeItem: classes.categoryTitle }}>
+              <Typography variant="body1" color="secondary">
                   Categories
               </Typography>
             </Grid>
@@ -50,11 +45,12 @@ class Dashboard extends Component {
                  classes= {{
                    flexContainer: classes.tabsCategories
                  }}>
-                 <Tab label="All" className={activeTab === 0 ? classes.activeTab : ""}/>
                  { categories.map( category => {
                       return <Tab key={category.id}
                                   label={category.name}
-                                  className={activeTab  === category.id ? classes.activeTab : ""} />
+                                  className={activeTab  === category.id ? classes.activeTab : ""}
+                                  component={Link}
+                                  to={`${category.path}`}/>
                  })}
             </Tabs>
           </Grid>

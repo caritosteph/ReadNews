@@ -7,7 +7,7 @@ import styles from './header.styles';
 
 const Header = ({ classes }) => (
   <AppBar position="static">
-    <Toolbar classes={{ root: classes.toolbar}}>
+    <Toolbar classes={{ root: classes.toolbar }}>
       <Typography variant="title" color="inherit">
         ReadNews
       </Typography>
