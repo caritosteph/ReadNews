@@ -36,7 +36,8 @@ class Dashboard extends Component {
             <Grid item classes={{
                     typeItem: classes.categoryTitle
                   }}>
-              <Typography variant="subheading" gutterBottom>
+              <Typography variant="body1"
+                          color="secondary">
                   Categories
               </Typography>
             </Grid>
@@ -49,8 +50,11 @@ class Dashboard extends Component {
                  classes= {{
                    flexContainer: classes.tabsCategories
                  }}>
+                 <Tab label="All" className={activeTab === 0 ? classes.activeTab : ""}/>
                  { categories.map( category => {
-                      return <Tab key={category.path} label={category.name} />
+                      return <Tab key={category.id}
+                                  label={category.name}
+                                  className={activeTab  === category.id ? classes.activeTab : ""} />
                  })}
             </Tabs>
           </Grid>

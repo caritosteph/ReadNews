@@ -8,6 +8,9 @@ const styles = theme => ({
   categoryTitle: {
     height: 60,
     padding: 20
+  },
+  activeTab: {
+    borderLeft: `5px solid ${theme.palette.primary.main}`
   }
 
 });
