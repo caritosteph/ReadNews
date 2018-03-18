@@ -15,3 +15,13 @@ export const getCategories = () => {
           .then( response => response.json())
           .then( data => data.categories);
 }
+
+/*
+ * Post API
+ */
+
+export const getAllPost = () => {
+  return fetch(`${API_URL}/posts`, { method: 'GET', headers })
+          .then( response => response.json())
+          .then( data => data);
+}

@@ -7,6 +7,7 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 import styles from './dashboard.styles';
 import Typography from 'material-ui/Typography';
 import { getCategories } from '../../util/api';
+import Posts from './Post';
 
 class Dashboard extends Component {
   state = {
@@ -37,14 +38,13 @@ class Dashboard extends Component {
               </Typography>
             </Grid>
 
-            <Tabs
-                 value={activeTab}
-                 textColor="primary"
-                 onChange={this.handleTabChange}
-                 indicatorColor="none"
-                 classes= {{
-                   flexContainer: classes.tabsCategories
-                 }}>
+            <Tabs value={activeTab}
+                  textColor="primary"
+                  onChange={this.handleTabChange}
+                  indicatorColor="none"
+                  classes= {{
+                    flexContainer: classes.tabsCategories
+                  }}>
                  { categories.map( category => {
                       return <Tab key={category.id}
                                   label={category.name}
@@ -54,8 +54,8 @@ class Dashboard extends Component {
                  })}
             </Tabs>
           </Grid>
-          <Grid>
-              Post
+          <Grid item xs={10}>
+              <Posts />
           </Grid>
       </Grid>
     );
