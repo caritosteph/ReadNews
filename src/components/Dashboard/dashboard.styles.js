@@ -12,7 +12,6 @@ const styles = theme => ({
   activeTab: {
     borderLeft: `5px solid ${theme.palette.primary.main}`
   }
-
 });
 
 export default styles;

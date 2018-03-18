@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { fetchAllPost } from '../../../actions/posts';
+import Post from './Post';
+import Grid from 'material-ui/Grid';
 
 class Posts extends Component {
 
@@ -12,8 +14,17 @@ class Posts extends Component {
 
   render(){
     const { posts } = this.props;
+
+    console.log("post:  ", posts);
+
     return (
-      <span>asd</span>
+      <Grid item xs={3}>
+        {
+          posts.map(post => (
+            <Post key={post.id} post={post} />
+          ))
+        }
+      </Grid>
     );
   }
 }
@@ -28,7 +39,7 @@ const mapDispatchToProps = ({
     fetchAllPost
 });
 
-Post.propTypes = {
+Posts.propTypes = {
   posts: PropTypes.array.isRequired
 };
 

@@ -7,7 +7,7 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 import styles from './dashboard.styles';
 import Typography from 'material-ui/Typography';
 import { getCategories } from '../../util/api';
-import Posts from './Post';
+import Posts from './Posts';
 
 class Dashboard extends Component {
   state = {
