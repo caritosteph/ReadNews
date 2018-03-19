@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { fetchAllPost } from '../../../actions/posts';
-import Post from './Post';
 import Grid from 'material-ui/Grid';
+import Post from './Post';
 
 class Posts extends Component {
 
@@ -15,13 +15,11 @@ class Posts extends Component {
   render(){
     const { posts } = this.props;
 
-    console.log("post:  ", posts);
-
     return (
-      <Grid item xs={3}>
+      <Grid container spacing={8}>
         {
           posts.map(post => (
-            <Post key={post.id} post={post} />
+              <Post key={post.id} post={post} />
           ))
         }
       </Grid>

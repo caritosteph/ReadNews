@@ -54,7 +54,7 @@ class Dashboard extends Component {
                  })}
             </Tabs>
           </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={10} className={classes.postsContainer}>
               <Posts />
           </Grid>
       </Grid>

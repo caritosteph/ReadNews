@@ -11,6 +11,9 @@ const styles = theme => ({
   },
   activeTab: {
     borderLeft: `5px solid ${theme.palette.primary.main}`
+  },
+  postsContainer: {
+    padding: 10
   }
 });
 

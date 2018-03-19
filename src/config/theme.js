@@ -15,7 +15,7 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
     common: {
-      border: '#d8dbdb'
+      border: 'rgba(0,0,0,.1)'
     }
   },
 });
