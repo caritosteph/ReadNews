@@ -1,6 +1,7 @@
 const styles = theme => ({
   card: {
-    border: `1px solid ${theme.palette.common.border}`
+    border: `1px solid ${theme.palette.common.border}`,
+    cursor: 'pointer'
   },
   cardTitle: {
     fontWeight: 700,
