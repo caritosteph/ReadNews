@@ -25,3 +25,10 @@ export const getAllPost = () => {
           .then( response => response.json())
           .then( data => data);
 }
+
+export const getPostByCategories = (category) => {
+  console.log("getPostByCategories: ", category);
+  return fetch(`${API_URL}/${category}/posts`, { method: 'GET', headers })
+          .then( response => response.json())
+          .then( data => data);
+}

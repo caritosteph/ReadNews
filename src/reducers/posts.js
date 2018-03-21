@@ -5,7 +5,6 @@ function posts(state = [], action) {
     case ALL_POST:
       const posts = action.posts;
       return [
-        ...state,
         ...posts
       ];
     default:

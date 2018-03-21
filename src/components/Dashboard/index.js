@@ -11,7 +11,7 @@ import Posts from './Posts';
 
 class Dashboard extends Component {
   state = {
-    activeTab: 0,
+    activeTab: "all",
     categories: []
   };
 
@@ -48,14 +48,15 @@ class Dashboard extends Component {
                  { categories.map( category => {
                       return <Tab key={category.id}
                                   label={category.name}
-                                  className={activeTab  === category.id ? classes.activeTab : ""}
+                                  className={activeTab  === category.name ? classes.activeTab : ""}
                                   component={Link}
-                                  to={`${category.path}`}/>
+                                  to={`${category.path}`}
+                                  value={category.name}/>
                  })}
             </Tabs>
           </Grid>
           <Grid item xs={10} className={classes.postsContainer}>
-              <Posts />
+              <Posts category={activeTab}/>
           </Grid>
       </Grid>
     );

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { fetchAllPost } from '../../../actions/posts';
@@ -9,8 +9,18 @@ class Posts extends Component {
 
   componentDidMount = () => {
     const { fetchAllPost } = this.props;
-    fetchAllPost();
+    fetchAllPost("all");
   }
+
+
+  componentWillReceiveProps = (nextProps) => {
+    const { category } = this.props;
+    if(nextProps.category !== category) {
+      const { fetchAllPost } = this.props;
+      fetchAllPost(nextProps.category);
+    }
+  }
+
 
   render(){
     const { posts } = this.props;

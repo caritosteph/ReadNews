@@ -2,26 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
-import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
-import InsertComment from 'material-ui-icons/InsertComment';
-import ThumbUp from 'material-ui-icons/ThumbUp';
-import Delete from 'material-ui-icons/Delete';
 import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
-import IconButton from 'material-ui/IconButton';
 import { formatDate } from '../../../../util/formatDate';
 import PostActions from '../../../common/PostActions';
 import styles from './post.styles';
-
-const state = {
-    value: 0,
-  };
-
-const  handleChange = (event, value) => {
-    this.setState({ value });
-  };
 
 const Post = ({classes, post, value}) => {
   return (
@@ -60,7 +46,8 @@ const Post = ({classes, post, value}) => {
 }
 
 Post.propTypes = {
-
+  classes: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Post);
