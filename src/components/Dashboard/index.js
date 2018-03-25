@@ -13,12 +13,15 @@ import { getCategories } from '../../util/api';
 import Posts from './Posts';
 import SortPost from '../common/SortPost';
 import Divider from 'material-ui/Divider';
-
+import Button from 'material-ui/Button';
+import AddIcon from 'material-ui-icons/Add';
+import NewPost from './Posts/NewPost';
 
 class Dashboard extends Component {
   state = {
     activeTab: 0,
-    categories: []
+    categories: [],
+    newPost: false
   };
 
   handleTabChange = (event, activeTab) => {
@@ -35,9 +38,18 @@ class Dashboard extends Component {
     sortPost(sortby);
   }
 
+  handleNewPost = () => {
+    this.setState({ newPost: true })
+  }
+
+  handleCloseNewPost = () => {
+    console.log("handleCloseNewPost");
+    this.setState({ newPost: false })
+  }
+
   render(){
 
-    const { activeTab, categories } = this.state;
+    const { activeTab, categories, newPost } = this.state;
     const { classes, match } = this.props;
     const category = match.params.category
 
@@ -73,7 +85,16 @@ class Dashboard extends Component {
               </Grid>
               <Divider classes={{ root: classes.divider}} />
               <Posts  category={category} />
+              <Grid container spacing={0} justify="center">
+                <Button variant="fab"
+                        color="primary"
+                        onClick={this.handleNewPost}>
+                  <AddIcon />
+                </Button>
+              </Grid>
           </Grid>
+          <NewPost open={newPost}
+                   handleCloseNewPost={this.handleCloseNewPost}/>
       </Grid>
     );
   }
