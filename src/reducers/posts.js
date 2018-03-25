@@ -1,12 +1,19 @@
-import { ALL_POST } from '../actions/constantTypes';
+import { ALL_POST, SORT_POST} from '../actions/constantTypes';
 
-function posts(state = [], action) {
+function posts(state = {}, action) {
+  const posts = action.posts;
+
   switch (action.type) {
     case ALL_POST:
-      const posts = action.posts;
-      return [
-        ...posts
-      ];
+      return {
+        ...state,
+        posts
+      };
+    case SORT_POST:
+      return {
+        ...state,
+        sortby: action.sortby
+      }
     default:
       return state;
   }

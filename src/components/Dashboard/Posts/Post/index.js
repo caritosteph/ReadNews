@@ -7,6 +7,10 @@ import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
 import { formatDate } from '../../../../util/formatDate';
 import PostActions from '../../../common/PostActions';
+import InsertComment from 'material-ui-icons/InsertComment';
+import ThumbUp from 'material-ui-icons/ThumbUp';
+import ThumbDown from 'material-ui-icons/ThumbDown';
+import IconButton from 'material-ui/IconButton';
 import styles from './post.styles';
 
 const Post = ({classes, post, value}) => {
@@ -37,7 +41,7 @@ const Post = ({classes, post, value}) => {
               </Grid>
             </Grid>
           </CardContent>
-          <CardActions className={classes.cardActions}>
+          <CardActions className={classes.cardActions} disableActionSpacing>
             <PostActions commentCount={post.commentCount} voteScore={post.voteScore}/>
           </CardActions>
         </Card>
@@ -51,3 +55,6 @@ Post.propTypes = {
 };
 
 export default withStyles(styles)(Post);
+/*
+<PostActions commentCount={post.commentCount} voteScore={post.voteScore}/>
+*/

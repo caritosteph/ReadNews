@@ -12,7 +12,6 @@ class Posts extends Component {
     fetchAllPost("all");
   }
 
-
   componentWillReceiveProps = (nextProps) => {
     const { category } = this.props;
     if(nextProps.category !== category) {
@@ -21,14 +20,13 @@ class Posts extends Component {
     }
   }
 
-
   render(){
-    const { posts } = this.props;
+    const { posts } = this.props.posts;
 
     return (
       <Grid container spacing={8}>
         {
-          posts.map(post => (
+          posts && posts.map(post => (
               <Post key={post.id} post={post} />
           ))
         }
@@ -37,18 +35,18 @@ class Posts extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    posts: state.posts
-  }
-}
+
+
+const mapStateToProps  = ({ posts }) => ({
+  posts
+})
 
 const mapDispatchToProps = ({
-    fetchAllPost
+  fetchAllPost
 });
 
 Posts.propTypes = {
-  posts: PropTypes.array.isRequired
+  posts: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);

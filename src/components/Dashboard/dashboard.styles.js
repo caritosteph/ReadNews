@@ -14,6 +14,10 @@ const styles = theme => ({
   },
   postsContainer: {
     padding: 10
+  },
+  divider: {
+    marginTop: 5,
+    marginBottom: 15
   }
 });
 

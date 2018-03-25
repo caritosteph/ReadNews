@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
 import RestoreIcon from 'material-ui-icons/Restore';
+import LocationOnIcon from 'material-ui-icons/LocationOn';
 import InsertComment from 'material-ui-icons/InsertComment';
 import ThumbUp from 'material-ui-icons/ThumbUp';
 import Delete from 'material-ui-icons/Delete';
