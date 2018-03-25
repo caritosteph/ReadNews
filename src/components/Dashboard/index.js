@@ -18,8 +18,7 @@ import Divider from 'material-ui/Divider';
 class Dashboard extends Component {
   state = {
     activeTab: 0,
-    categories: [],
-  //  sortby: ""
+    categories: []
   };
 
   handleTabChange = (event, activeTab) => {
@@ -61,7 +60,7 @@ class Dashboard extends Component {
                  { categories.map( category => {
                       return <Tab key={category.id}
                                   label={category.name}
-                                  className={activeTab  === category.name ? classes.activeTab : ""}
+                                  className={activeTab  === category.id ? classes.activeTab : ""}
                                   component={Link}
                                   to={`${category.path}`}
                                   value={category.id} />
@@ -73,31 +72,20 @@ class Dashboard extends Component {
                 <SortPost handleSortPost={this.handleSortPost} />
               </Grid>
               <Divider classes={{ root: classes.divider}} />
-              <Posts  category={category}/>
+              <Posts  category={category} />
           </Grid>
       </Grid>
     );
   }
 }
 
-
-
-/*onst mapStateToProps = (state, ownProps) => {
-  console.log("ownProps: ", ownProps);
-  return {
-    posts: state.posts
-  }
-}*/
-
 const mapDispatchToProps = ({
-    sortPost
+  sortPost
 });
 
 Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
-
-//export default withStyles(styles)(Dashboard);
 
 export default compose(
   connect(null, mapDispatchToProps),

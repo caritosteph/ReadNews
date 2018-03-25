@@ -1,7 +1,11 @@
 import { ALL_POST, SORT_POST} from '../actions/constantTypes';
 
-function posts(state = {}, action) {
-  const posts = action.posts;
+const initialState = {
+  sortby: "-timestamp"
+}
+
+function posts(state = initialState, action) {
+  const { posts, sortby } = action;
 
   switch (action.type) {
     case ALL_POST:
@@ -12,7 +16,7 @@ function posts(state = {}, action) {
     case SORT_POST:
       return {
         ...state,
-        sortby: action.sortby
+        sortby
       }
     default:
       return state;
