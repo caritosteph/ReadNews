@@ -43,7 +43,6 @@ class Dashboard extends Component {
   }
 
   handleCloseNewPost = () => {
-    console.log("handleCloseNewPost");
     this.setState({ newPost: false })
   }
 
