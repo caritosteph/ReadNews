@@ -9,18 +9,17 @@ import Grid from 'material-ui/Grid';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import styles from './dashboard.styles';
 import Typography from 'material-ui/Typography';
-import { getCategories } from '../../util/api';
 import Posts from './Posts';
 import SortPost from '../common/SortPost';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import NewPost from './Posts/NewPost';
+import { fetchAllCategories } from '../../actions/categories';
 
 class Dashboard extends Component {
   state = {
     activeTab: 0,
-    categories: [],
     newPost: false
   };
 
@@ -29,8 +28,8 @@ class Dashboard extends Component {
   }
 
   componentDidMount = () => {
-    getCategories()
-      .then( categories => this.setState({ categories }));
+    const { fetchAllCategories } = this.props;
+    fetchAllCategories();
   }
 
   handleSortPost = (sortby) => {
@@ -48,8 +47,8 @@ class Dashboard extends Component {
 
   render(){
 
-    const { activeTab, categories, newPost } = this.state;
-    const { classes, match } = this.props;
+    const { activeTab, newPost } = this.state;
+    const { classes, match, categories } = this.props;
     const category = match.params.category
 
     return (
@@ -68,7 +67,7 @@ class Dashboard extends Component {
                   classes= {{
                     flexContainer: classes.tabsCategories
                   }}>
-                 { categories.map( category => {
+                 { categories && categories.map( category => {
                       return <Tab key={category.id}
                                   label={category.name}
                                   className={activeTab  === category.id ? classes.activeTab : ""}
@@ -99,8 +98,13 @@ class Dashboard extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  categories: state.categories.categories
+})
+
 const mapDispatchToProps = ({
-  sortPost
+  sortPost,
+  fetchAllCategories
 });
 
 Dashboard.propTypes = {
@@ -108,6 +112,6 @@ Dashboard.propTypes = {
 };
 
 export default compose(
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles)
 )(Dashboard);

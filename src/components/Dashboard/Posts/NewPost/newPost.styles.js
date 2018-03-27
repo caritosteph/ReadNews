@@ -10,7 +10,7 @@ const styles = theme => ({
     margin: '0 auto',
     background: '#eee',
     paddingBottom: 60,
-    paddingTop: 50,
+    paddingTop: 30,
     marginTop: 50
   }
 });
