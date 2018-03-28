@@ -6,11 +6,6 @@ let db = {}
 const defaultData = {
   categories: [
       {
-        id: 0,
-        name: 'all',
-        path: 'all'
-      },
-      {
         id: 1,
         name: 'react',
         path: 'react'

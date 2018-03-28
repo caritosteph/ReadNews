@@ -67,14 +67,20 @@ class Dashboard extends Component {
                   classes= {{
                     flexContainer: classes.tabsCategories
                   }}>
-                 { categories && categories.map( category => {
-                      return <Tab key={category.id}
-                                  label={category.name}
-                                  className={activeTab  === category.id ? classes.activeTab : ""}
-                                  component={Link}
-                                  to={`${category.path}`}
-                                  value={category.id} />
-                 })}
+                  <Tab label="All"
+                       className={activeTab  === 0 ? classes.activeTab : ""}
+                       component={Link}
+                       to="all"
+                       value={0} />
+                 { categories && categories.map( category => (
+                     <Tab key={category.id}
+                                 label={category.name}
+                                 className={activeTab  === category.id ? classes.activeTab : ""}
+                                 component={Link}
+                                 to={`${category.path}`}
+                                 value={category.id} />
+                   ))
+                  }
             </Tabs>
           </Grid>
           <Grid item xs={10} className={classes.postsContainer}>
