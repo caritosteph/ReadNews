@@ -37,9 +37,6 @@ class NewPost extends React.Component {
               <Typography variant="title" color="inherit" className={classes.flex}>
                 New Post
               </Typography>
-              <Button color="inherit" onClick={handleCloseNewPost}>
-                save
-              </Button>
             </Toolbar>
           </AppBar>
           <Grid container spacing={0}

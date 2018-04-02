@@ -8,6 +8,9 @@ const styles = theme => ({
     marginTop: 10,
     marginBottom: theme.spacing.unit,
     minWidth: 400,
+  },
+  button: {
+    paddingTop: 20
   }
 });
 

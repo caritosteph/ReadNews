@@ -1,5 +1,12 @@
+import { authToken } from './index.js';
+
 const API_URL = "http://localhost:3001";
-const AUTH_TOKEN =  Math.random().toString(36).substr(-8);
+
+let AUTH_TOKEN =  localStorage.authToken;
+if(AUTH_TOKEN){
+  AUTH_TOKEN = localStorage.authToken = authToken();
+}
+
 const headers = {
   Accept: 'application/json',
   Authorization: AUTH_TOKEN,
@@ -27,8 +34,14 @@ export const getAllPost = () => {
 }
 
 export const getPostByCategories = (category) => {
-  console.log("getPostByCategories: ", category);
   return fetch(`${API_URL}/${category}/posts`, { method: 'GET', headers })
+          .then( response => response.json())
+          .then( data => data);
+}
+
+export const createNewPost = (post) => {
+  console.log("body: ", post)
+  return fetch(`${API_URL}/posts`, { method: 'POST', headers, body: JSON.stringify(post) })
           .then( response => response.json())
           .then( data => data);
 }

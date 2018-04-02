@@ -1,5 +1,5 @@
 import { ALL_CATEGORIES } from './constantTypes';
-import { getCategories } from '../util/api';
+import { getCategories } from '../utils/api';
 
 const allCategories = (categories) =>  ({
   type: ALL_CATEGORIES,

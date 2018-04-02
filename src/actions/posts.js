@@ -1,9 +1,14 @@
-import { ALL_POST , SORT_POST} from './constantTypes';
-import { getAllPost, getPostByCategories } from '../util/api';
+import { ALL_POST , SORT_POST, ADD_POST} from './constantTypes';
+import { getAllPost, getPostByCategories, createNewPost } from '../utils/api';
 
 const allPosts = (posts) =>  ({
   type: ALL_POST,
   posts
+});
+
+const addPost = (post) => ({
+  type: ADD_POST,
+  post
 });
 
 export const sortPost = (sortby) => ({
@@ -19,4 +24,9 @@ export const fetchAllPost = (category) => dispatch => {
     return getPostByCategories(category)
       .then( posts => dispatch(allPosts(posts)));
   }
+};
+
+export const fetchNewPost = (post) => dispatch => {
+  return createNewPost(post)
+      .then( post => dispatch(addPost(post)));
 };
