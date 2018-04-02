@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { compose } from 'redux';
 import { withStyles } from 'material-ui/styles';
@@ -28,7 +29,7 @@ class FormPost extends Component {
   submitNewPost = (event) => {
     event.preventDefault();
     
-    const { fetchNewPost } = this.props;
+    const { fetchNewPost, handleCloseNewPost, history } = this.props;
     const form = serializeForm(event.target, {hash:true})
     const values = {
       id: cuid(),
@@ -36,6 +37,7 @@ class FormPost extends Component {
       ...form
     }
     fetchNewPost(values);
+    handleCloseNewPost();
   }
 
   render(){
@@ -79,6 +81,7 @@ class FormPost extends Component {
         </FormControl>
         <Grid container spacing={0} justify="center" className={classes.button}>
           <Button
+            variant="raised"
             type="submit"
             color="primary">
             Save Post

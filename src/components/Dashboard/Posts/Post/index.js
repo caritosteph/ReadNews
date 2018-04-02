@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
@@ -11,8 +12,13 @@ import styles from './post.styles';
 
 const Post = ({ classes, post, value }) => {
   return (
-      <Grid item xs={3} sm={3} >
-        <Card className={classes.card} elevation={0}>
+      <Grid item xs={3} sm={3}
+        classes={{ typeItem: classes.grid }}
+        component={Link}
+        to="`/posts/${post.id}`">
+        <Card elevation={0}
+          className={classes.card}
+          >
           <CardContent>
             <Typography 
               className={classes.cardTitle} 

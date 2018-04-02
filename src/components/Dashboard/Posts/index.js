@@ -10,7 +10,7 @@ class Posts extends Component {
 
   componentDidMount = () => {
     const { fetchAllPost } = this.props;
-    fetchAllPost("all");
+    fetchAllPost();
   }
 
   componentWillReceiveProps = (nextProps) => {

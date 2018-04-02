@@ -7,10 +7,7 @@ const Routes = () => (
       <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/:category" component={Dashboard} />
-          <Route path="/posts"  component={Dashboard} />
-          <Route path="/posts/:id" component={Dashboard}/>
           <Route path="/posts/:id/comments" component={Dashboard} />
-          <Route path="/comments" component={Dashboard} />
           <Route path="/comments/:id" component={Dashboard} />
       </Switch>
     </BrowserRouter>

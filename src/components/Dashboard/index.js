@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { compose } from 'redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import { sortPost } from '../../actions/posts';
 import Grid from 'material-ui/Grid';
@@ -90,9 +90,12 @@ class Dashboard extends Component {
               <Divider classes={{ root: classes.divider}} />
               <Posts  category={category} />
               <Grid container spacing={0} justify="center">
-                <Button variant="fab"
-                        color="primary"
-                        onClick={this.handleNewPost}>
+                <Button 
+                  //component={Link}
+                  //to="/posts/newPost"
+                  variant="fab"
+                  color="primary"
+                  onClick={this.handleNewPost}>
                   <AddIcon />
                 </Button>
               </Grid>

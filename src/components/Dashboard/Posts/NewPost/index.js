@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Button from 'material-ui/Button';
 import Dialog from 'material-ui/Dialog';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -42,7 +41,7 @@ class NewPost extends React.Component {
           <Grid container spacing={0}
                 justify="center"
                 className={classes.gridForm}>
-            <FormPost />
+            <FormPost handleCloseNewPost={handleCloseNewPost} />
           </Grid>
         </Dialog>
       </div>
