@@ -15,10 +15,9 @@ const Post = ({ classes, post, value }) => {
       <Grid item xs={3} sm={3}
         classes={{ typeItem: classes.grid }}
         component={Link}
-        to="`/posts/${post.id}`">
+        to={`/posts/${post.id}`}>
         <Card elevation={0}
-          className={classes.card}
-          >
+          className={classes.card}>
           <CardContent>
             <Typography 
               className={classes.cardTitle} 

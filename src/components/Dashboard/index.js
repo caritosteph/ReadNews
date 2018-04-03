@@ -14,7 +14,7 @@ import SortPost from '../common/SortPost';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
-import NewPost from './Posts/NewPost';
+import NewPost from './NewPost';
 import { fetchAllCategories } from '../../actions/categories';
 
 class Dashboard extends Component {

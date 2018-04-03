@@ -40,8 +40,16 @@ export const getPostByCategories = (category) => {
 }
 
 export const createNewPost = (post) => {
-  console.log("body: ", post)
   return fetch(`${API_URL}/posts`, { method: 'POST', headers, body: JSON.stringify(post) })
           .then( response => response.json())
           .then( data => data);
 }
+
+export const postsDetails = (id) => {
+  return fetch(`${API_URL}/posts/${id}`, { method: 'GET', headers })
+          .then( response => response.json())
+          .then( data => data);
+}
+
+
+

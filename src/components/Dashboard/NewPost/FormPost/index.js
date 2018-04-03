@@ -12,7 +12,7 @@ import Select from 'material-ui/Select';
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import serializeForm from 'form-serialize';
-import { fetchNewPost } from '../../../../../actions/posts';
+import { fetchNewPost } from '../../../../actions/posts';
 import cuid from 'cuid';
 import styles from './formPost.styles';
 
@@ -29,7 +29,7 @@ class FormPost extends Component {
   submitNewPost = (event) => {
     event.preventDefault();
     
-    const { fetchNewPost, handleCloseNewPost, history } = this.props;
+    const { fetchNewPost, handleCloseNewPost } = this.props;
     const form = serializeForm(event.target, {hash:true})
     const values = {
       id: cuid(),
