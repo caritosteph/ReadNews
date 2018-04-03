@@ -51,5 +51,12 @@ export const postsDetails = (id) => {
           .then( data => data);
 }
 
+/*
+ * Comments API
+ */
 
-
+export const getAllComments = (id) => {
+  return fetch(`${API_URL}/posts/${id}/comments`, { method: 'GET', headers })
+          .then( response => response.json())
+          .then( data => data);
+}

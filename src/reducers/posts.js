@@ -1,4 +1,4 @@
-import { ALL_POST, SORT_POST, ADD_POST, POST_DETAIL } from '../actions/constantTypes';
+import { ALL_POST, SORT_POST, ADD_POST } from '../actions/constantTypes';
 
 const initialState = {
   sortby: "-timestamp"
@@ -26,14 +26,6 @@ function posts(state = initialState, action) {
           post
         ]
       }
-    case POST_DETAIL:
-    return {
-      ...state,
-      //posts: [
-      //  ...state.posts,
-      //  post
-      //]
-    }
     default:
       return state;
   }

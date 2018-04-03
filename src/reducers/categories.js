@@ -1,6 +1,5 @@
 import { ALL_CATEGORIES } from '../actions/constantTypes';
 
-
 function categories(state = {}, action) {
   const { categories } = action;
 

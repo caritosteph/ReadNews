@@ -3,3 +3,4 @@ export const ALL_POST = "ALL_POST";
 export const SORT_POST = "SORT_POST";
 export const ADD_POST = "ADD_POST";
 export const POST_DETAIL = "POST_DETAIL";
+export const ALL_COMMENTS = "ALL_COMMENTS";

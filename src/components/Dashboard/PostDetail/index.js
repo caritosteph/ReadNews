@@ -44,7 +44,7 @@ class PostDetail extends Component {
             className={classes.detailHeader}>
               <Avatar 
                 classes= {{ root: classes.authorAvatar}}>
-                  A
+                {post && post.author.charAt(0).toUpperCase()}
               </Avatar>
               <Grid className={classes.detail}>
                 <Typography color="textSecondary" variant="title" gutterBottom>
@@ -58,7 +58,7 @@ class PostDetail extends Component {
           <Typography variant="display1" gutterBottom>
             {post.title}
           </Typography>
-          <Typography variant="subheading" gutterBottom>
+          <Typography variant="body1" gutterBottom>
             {post.body}
           </Typography>
           <PostActions 
