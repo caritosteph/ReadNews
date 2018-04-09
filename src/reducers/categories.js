@@ -1,6 +1,10 @@
 import { ALL_CATEGORIES } from '../actions/constantTypes';
 
-function categories(state = {}, action) {
+const initialState = {
+  categories: []
+}
+
+function categories(state = initialState, action) {
   const { categories } = action;
 
   switch (action.type) {

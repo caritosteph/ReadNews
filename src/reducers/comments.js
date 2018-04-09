@@ -1,6 +1,10 @@
 import { ALL_COMMENTS } from '../actions/constantTypes';
 
-function comments(state = {}, action) {
+const initialState = {
+  comments: []
+}
+
+function comments(state = initialState, action) {
   const { comments } = action;
 
   switch (action.type) {

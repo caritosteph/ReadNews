@@ -5,11 +5,15 @@ const styles = theme => ({
     width: 60
   },
   grid: {
-    paddingTop: 50
+    paddingTop: 50,
+    alignItem: 'center',
+    justifyContent: 'center'
   },
   detailHeader: {
     paddingTop: 20,
-    paddingBottom: 20
+    paddingBottom: 20,
+    alignItem: 'center',
+    //justifyContent: 'center'
   },
   detail: {
     paddingLeft: 25

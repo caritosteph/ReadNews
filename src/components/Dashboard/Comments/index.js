@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -13,27 +13,34 @@ import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import serializeForm from 'form-serialize';
 import cuid from 'cuid';
-import styles from './formPost.styles';
+import { fetchAllComments } from '../../../actions/comments.js';
+import Comment from './Comment';
+import styles from './comments.styles';
 
 class Comments extends Component {
 
   componentDidMount() {
-    const { fetchAllComments, match } = this.props;
-    fetchAllComments(match.params.id);
+    const { fetchAllComments, postId } = this.props;
+    fetchAllComments(postId);
   }
 
   render(){
 
-    const { classes } = this.props;
+    const { classes, comments } = this.props;
 
     return (
-      <div></div>
+      <Fragment>
+        { comments.map(comment => (
+            <Comment key={comment.id} comment={comment} />
+          )) 
+        }
+      </Fragment>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  comments: state.comments
+  comments: state.comments.comments
 });
 
 const mapDispatchToProps = ({

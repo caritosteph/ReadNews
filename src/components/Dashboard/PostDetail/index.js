@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
 import PostActions from '../../common/PostActions';
 import { postsDetails } from '../../../utils/api'
 import { formatDate } from '../../../utils'
+import Comments from '../Comments';
 import styles from './postDetail.styles';
 
 class PostDetail extends Component {
@@ -30,13 +29,13 @@ class PostDetail extends Component {
 
   render() {
 
-    const { classes } = this.props;
+    const { classes, match } = this.props;
     const { post } = this.state;
+    const id = match.params.id;
 
     return (
       <Grid container spacing={0} className={classes.grid}>
-        <Grid item xs></Grid>
-        <Grid item xs={4}>
+        <Grid item xs={5}>
           <Grid 
             container 
             spacing={0} 
@@ -64,8 +63,8 @@ class PostDetail extends Component {
           <PostActions 
             commentCount={post.commentCount} 
             voteScore={post.voteScore}/>
+          <Comments postId={id} />
         </Grid>
-        <Grid item xs></Grid>
       </Grid>
 
     )

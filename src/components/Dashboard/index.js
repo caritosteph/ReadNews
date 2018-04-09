@@ -50,7 +50,7 @@ class Dashboard extends Component {
     const { activeTab, newPost } = this.state;
     const { classes, match, categories } = this.props;
     const category = match.params.category
-
+console.log("caegries: ", categories)
     return (
       <Grid container spacing={0} className="full-height">
           <Grid item xs={2} classes={{ typeItem: classes.gridCategories }}>
