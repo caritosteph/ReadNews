@@ -1,9 +1,6 @@
 const styles = theme => ({
-  grid: {
-    textDecoration: 'none'
-  },
   card: {
-    border: `1px solid ${theme.palette.common.border}`
+    marginBottom: 30
   },
   cardTitle: {
     fontWeight: 700,
