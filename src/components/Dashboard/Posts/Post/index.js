@@ -2,54 +2,56 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Card, { CardHeader, CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
 import { formatDate } from '../../../../utils';
 import PostActions from '../../../common/PostActions';
+import IconButton from 'material-ui/IconButton';
+import Close from 'material-ui-icons/Close';
 import styles from './post.styles';
 
 const Post = ({ classes, post, value }) => {
   return (
-      <Grid item xs={3} sm={3}
-        classes={{ typeItem: classes.grid }}
-        component={Link}
-        to={`/posts/${post.id}`}>
+      <Grid item xs={3} sm={3}>
         <Card elevation={0}
           className={classes.card}>
           <CardContent>
-            <Typography 
-              className={classes.cardTitle} 
-              variant="title" 
-              component="h2">
-              {post.title}
-            </Typography>
-            <Typography 
-              color="textSecondary">
-              Category: {post.category}
-            </Typography>
-            <Typography 
-              className={classes.cardBody} 
-              color="textSecondary">
-              {post.body}
-            </Typography>
-            <Grid container spacing={0}>
-              <Grid item xs={3}>
-                <Avatar 
-                  classes= {{ root: classes.authorAvatar}}>
-                  {post.author.charAt(0).toUpperCase()}
-                </Avatar>
+            <Link to={`/posts/${post.id}`}
+              className={classes.cardcontent}>
+              <Typography 
+                className={classes.cardTitle} 
+                variant="title" 
+                component="h2">
+                {post.title}
+              </Typography>
+              <Typography 
+                color="textSecondary">
+                Category: {post.category}
+              </Typography>
+              <Typography 
+                className={classes.cardBody} 
+                color="textSecondary">
+                {post.body}
+              </Typography>
+              <Grid container spacing={0}>
+                <Grid item xs={3}>
+                  <Avatar 
+                    classes= {{ root: classes.authorAvatar}}>
+                    {post.author.charAt(0).toUpperCase()}
+                  </Avatar>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography color="textSecondary">
+                    {post.author.charAt(0).toUpperCase()}{post.author.substring(1)}
+                  </Typography>
+                  <Typography color="textSecondary">
+                    {formatDate(post.timestamp)}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item xs={9}>
-                <Typography color="textSecondary">
-                  {post.author.charAt(0).toUpperCase()}{post.author.substring(1)}
-                </Typography>
-                <Typography color="textSecondary">
-                  {formatDate(post.timestamp)}
-                </Typography>
-              </Grid>
-            </Grid>
+            </Link>
           </CardContent>
           <CardActions 
             className={classes.cardActions}

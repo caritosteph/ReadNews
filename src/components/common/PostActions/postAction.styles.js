@@ -1,8 +1,8 @@
 const styles = theme => ({
-  bottomNavigation: {
-    flexDirection: 'row',
-    justifyContent: "space-evenly"
-
+  iconButton: {
+    '&:hover': {
+      backgroundColor: '#e7e4e4'
+    }
   }
 });
 

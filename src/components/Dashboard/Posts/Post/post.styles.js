@@ -1,5 +1,5 @@
 const styles = theme => ({
-  grid: {
+  cardcontent: {
     textDecoration: 'none'
   },
   card: {
@@ -25,7 +25,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.secondary.main
   },
   cardActions: {
-    justifyContent: "center"
+    display: 'flex'
   },
   bottomNavigation: {
     flexDirection: 'row',
