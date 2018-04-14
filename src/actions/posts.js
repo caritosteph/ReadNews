@@ -1,5 +1,5 @@
-import { ALL_POST , SORT_POST, ADD_POST } from './constantTypes';
-import { getAllPost, getPostByCategories, createNewPost } from '../utils/api';
+import { ALL_POST , SORT_POST, ADD_POST, DELETE_POST, VOTE_POST } from './constantTypes';
+import { getAllPost, getPostByCategories, createNewPost, deletePost, votePost } from '../utils/api';
 
 const allPosts = (posts) =>  ({
   type: ALL_POST,
@@ -9,6 +9,11 @@ const allPosts = (posts) =>  ({
 const addPost = (post) => ({
   type: ADD_POST,
   post
+});
+
+const removePost = (postId) => ({
+  type: DELETE_POST,
+  postId
 });
 
 export const sortPost = (sortby) => ({
@@ -29,4 +34,9 @@ export const fetchAllPost = (category) => dispatch => {
 export const fetchNewPost = (post) => dispatch => {
   return createNewPost(post)
       .then( post => dispatch(addPost(post)));
+};
+
+export const fetchDeletePost = (postId) => dispatch => {
+  return deletePost(postId)
+      .then( post => dispatch(removePost(post.id)));
 };

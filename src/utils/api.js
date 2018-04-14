@@ -51,6 +51,18 @@ export const postsDetails = (id) => {
           .then( data => data);
 }
 
+export const deletePost = (id) => {
+  return fetch(`${API_URL}/posts/${id}`, { method: 'DELETE', headers })
+          .then( response => response.json())
+          .then( data => data);
+}
+
+export const votePost = (voteType) => {
+  return fetch(`${API_URL}/posts/${id}`, { method: 'POST', headers, body: JSON.stringify(voteType) })
+          .then( response => response.json())
+          .then( data => data);
+}
+
 /*
  * Comments API
  */

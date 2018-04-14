@@ -28,7 +28,7 @@ class Posts extends Component {
       <Grid container spacing={8}>
         {
           posts && posts.sort(sortBy(sortby.sortby)).map(post => (
-              <Post key={post.id} post={post} />
+              !post.deleted && <Post key={post.id} post={post} />
           ))
         }
       </Grid>

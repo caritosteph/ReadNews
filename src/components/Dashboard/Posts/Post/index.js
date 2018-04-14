@@ -28,7 +28,8 @@ const Post = ({ classes, post, value }) => {
             title={<Typography 
                 className={classes.cardTitle} 
                 variant="title" 
-                component="h2">
+                component={Link}
+                to={`/posts/${post.id}`}>
                 {post.title}
               </Typography>}
           />
@@ -66,6 +67,7 @@ const Post = ({ classes, post, value }) => {
             className={classes.cardActions}
             disableActionSpacing>
             <PostActions 
+              postId={post.id}
               commentCount={post.commentCount} 
               voteScore={post.voteScore}/>
           </CardActions>
