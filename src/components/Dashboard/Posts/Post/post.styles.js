@@ -7,9 +7,7 @@ const styles = theme => ({
   },
   cardTitle: {
     fontWeight: 700,
-    fontSize: 21,
-    letterSpacing: -.29,
-    height: 55
+    fontSize: 21
   },
   cardBody: {
     marginBottom: 12,

@@ -25,11 +25,15 @@ class PostActions extends React.Component {
 
     return (
       <Fragment>
-        <IconButton className={classes.iconButton}>
+        <IconButton 
+          className={classes.iconButton}
+          onClick={this.delete}>
           <Delete />
         </IconButton>
         <Grid container spacing={0} justify="center" alignItems="center">
-          <IconButton className={classes.iconButton}>
+          <IconButton 
+            className={classes.iconButton}
+            onClick={this.voteScore}>
             <ThumbUp />
           </IconButton>
           { voteScore }
@@ -37,7 +41,8 @@ class PostActions extends React.Component {
             <ThumbDown />
           </IconButton>
         </Grid>
-        <IconButton className={classes.iconButton}>
+        <IconButton 
+          className={classes.iconButton}>
           <InsertComment /> 
         </IconButton>
         { commentCount }

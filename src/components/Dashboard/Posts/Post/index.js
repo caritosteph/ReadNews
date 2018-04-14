@@ -10,6 +10,7 @@ import { formatDate } from '../../../../utils';
 import PostActions from '../../../common/PostActions';
 import IconButton from 'material-ui/IconButton';
 import Close from 'material-ui-icons/Close';
+import Create from 'material-ui-icons/Create';
 import styles from './post.styles';
 
 const Post = ({ classes, post, value }) => {
@@ -17,15 +18,23 @@ const Post = ({ classes, post, value }) => {
       <Grid item xs={3} sm={3}>
         <Card elevation={0}
           className={classes.card}>
-          <CardContent>
-            <Link to={`/posts/${post.id}`}
-              className={classes.cardcontent}>
-              <Typography 
+          <CardHeader
+            className={classes.cardTitle} 
+            action={
+              <IconButton>
+                <Create />
+              </IconButton>
+            }
+            title={<Typography 
                 className={classes.cardTitle} 
                 variant="title" 
                 component="h2">
                 {post.title}
-              </Typography>
+              </Typography>}
+          />
+          <CardContent>
+            <Link to={`/posts/${post.id}`}
+              className={classes.cardcontent}>
               <Typography 
                 color="textSecondary">
                 Category: {post.category}
