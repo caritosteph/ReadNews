@@ -16,6 +16,11 @@ const removePost = (postId) => ({
   postId
 });
 
+const voteScorePost = (newPost) => ({
+  type: VOTE_POST,
+  newPost
+});
+
 export const sortPost = (sortby) => ({
     type: SORT_POST,
     sortby
@@ -39,4 +44,9 @@ export const fetchNewPost = (post) => dispatch => {
 export const fetchDeletePost = (postId) => dispatch => {
   return deletePost(postId)
       .then( post => dispatch(removePost(post.id)));
+};
+
+export const fetchVotePost = (postId, voteType) => dispatch => {
+  return votePost(postId, voteType)
+      .then( newPost => dispatch(voteScorePost(newPost)));
 };

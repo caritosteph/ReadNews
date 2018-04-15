@@ -57,8 +57,8 @@ export const deletePost = (id) => {
           .then( data => data);
 }
 
-export const votePost = (voteType) => {
-  return fetch(`${API_URL}/posts/${id}`, { method: 'POST', headers, body: JSON.stringify(voteType) })
+export const votePost = (id, voteType) => {
+  return fetch(`${API_URL}/posts/${id}`, { method: 'POST', headers, body: JSON.stringify({option: voteType}) })
           .then( response => response.json())
           .then( data => data);
 }

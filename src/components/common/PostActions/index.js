@@ -10,7 +10,7 @@ import ThumbDown from 'material-ui-icons/ThumbDown';
 import Delete from 'material-ui-icons/Delete';
 import IconButton from 'material-ui/IconButton';
 import Grid from 'material-ui/Grid';
-import { fetchDeletePost } from '../../../actions/posts.js';
+import { fetchDeletePost, fetchVotePost } from '../../../actions/posts.js';
 import styles from './postAction.styles';
 
 class PostActions extends React.Component {
@@ -27,6 +27,11 @@ class PostActions extends React.Component {
     fetchDeletePost(postId);
   }
 
+  voteScore = (voteType) => {
+    const  { fetchVotePost, postId } = this.props;
+    fetchVotePost(postId, voteType);
+  }
+
   render() {
     const { classes, commentCount, voteScore } = this.props;
     const { action } = this.state;
@@ -41,13 +46,13 @@ class PostActions extends React.Component {
         <Grid container spacing={0} justify="center" alignItems="center">
           <IconButton 
             className={classes.iconButton}
-            onClick={this.incrementScore}>
+            onClick={() => this.voteScore("upVote")}>
             <ThumbUp />
           </IconButton>
           { voteScore }
           <IconButton 
             className={classes.iconButton}
-            onClick={this.decrementScore}>
+            onClick={() => this.voteScore("downVote")}>
             <ThumbDown />
           </IconButton>
         </Grid>
@@ -66,7 +71,8 @@ class PostActions extends React.Component {
 //})
 
 const mapDispatchToProps = ({
-  fetchDeletePost
+  fetchDeletePost,
+  fetchVotePost
 });
 
 PostActions.propTypes = {
