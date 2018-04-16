@@ -19,10 +19,9 @@ function Transition(props) {
 class NewPost extends React.Component {
 
   render() {
-    const { classes, open, handleCloseNewPost } = this.props;
+    const { classes, open, handleCloseNewPost, post } = this.props;
 
     return (
-      <div>
         <Dialog
           fullScreen
           open={open}
@@ -30,21 +29,24 @@ class NewPost extends React.Component {
           transition={Transition}>
           <AppBar className={classes.appBar}>
             <Toolbar>
-              <IconButton color="inherit" onClick={handleCloseNewPost} aria-label="Close">
+              <IconButton 
+                color="inherit" 
+                onClick={handleCloseNewPost}>
                 <CloseIcon />
               </IconButton>
               <Typography variant="title" color="inherit" className={classes.flex}>
-                New Post
+                { post ? "Edit Post" : "New Post"}
               </Typography>
             </Toolbar>
           </AppBar>
           <Grid container spacing={0}
                 justify="center"
                 className={classes.gridForm}>
-            <FormPost handleCloseNewPost={handleCloseNewPost} />
+            <FormPost
+              post={post} 
+              handleCloseNewPost={handleCloseNewPost} />
           </Grid>
         </Dialog>
-      </div>
     );
   }
 }

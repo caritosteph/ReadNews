@@ -9,11 +9,10 @@ import Grid from 'material-ui/Grid';
 import { formatDate } from '../../../../utils';
 import PostActions from '../../../common/PostActions';
 import IconButton from 'material-ui/IconButton';
-import Close from 'material-ui-icons/Close';
 import Create from 'material-ui-icons/Create';
 import styles from './post.styles';
 
-const Post = ({ classes, post, value }) => {
+const Post = ({ classes, post, value, handleEditPost }) => {
   return (
       <Grid item xs={3} sm={3}>
         <Card elevation={0}
@@ -21,7 +20,8 @@ const Post = ({ classes, post, value }) => {
           <CardHeader
             className={classes.cardTitle} 
             action={
-              <IconButton>
+              <IconButton
+                onClick={() => handleEditPost(post)}>
                 <Create />
               </IconButton>
             }

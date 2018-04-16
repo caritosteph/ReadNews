@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { compose } from 'redux';
 import { withStyles } from 'material-ui/styles';
@@ -12,67 +11,105 @@ import Select from 'material-ui/Select';
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import serializeForm from 'form-serialize';
-import { fetchNewPost } from '../../../../actions/posts';
+import { fetchNewPost, fetchUpdatePost } from '../../../../actions/posts';
 import cuid from 'cuid';
 import styles from './formPost.styles';
 
 class FormPost extends Component {
   state = {
-    category: ''
+    category: '',
+    newPost: ""
   };
 
-  handleChooseCategory = (event) => {
+  handleChooseCategory = (event, input) => {
     const category = event.target.value;
-    this.setState({ category });
+
+    this.setState(state => ({
+      newPost: {
+        ...state.newPost,
+        ...{[input]: category}
+      }
+    }));
   }
 
   submitNewPost = (event) => {
     event.preventDefault();
-    
-    const { fetchNewPost, handleCloseNewPost } = this.props;
+    const { fetchNewPost, handleCloseNewPost, fetchUpdatePost, post } = this.props;
     const form = serializeForm(event.target, {hash:true})
     const values = {
       id: cuid(),
       timestamp: (new Date()).getTime(),
       ...form
     }
-    fetchNewPost(values);
+
+    if(post) {
+      fetchUpdatePost(post.id, form);
+    } else {
+      fetchNewPost(values);
+    }
     handleCloseNewPost();
   }
+
+  handleChange = (event, input) => {
+    const inputValue = event.target.value;
+    const newInput = {[input]: inputValue};
+
+    this.setState(state => ({
+      newPost: {
+        ...state.newPost,
+        ...newInput
+      }
+    }));
+  }
+
+  componentDidMount() {
+    const { post } = this.props;
+    if(post) {
+      this.setState({
+        newPost: {...post}
+      });
+    }
+  } 
 
   render(){
 
     const { classes, categories } = this.props;
-    const { category } = this.state;
+    const { newPost } = this.state;
 
     return (
-      <form autoComplete="off" onSubmit={this.submitNewPost}>
-        <FormControl className={classes.container} autoComplete="off">
-          <TextField required id="author"
+      <form onSubmit={this.submitNewPost}>
+        <FormControl className={classes.container}>
+          <TextField 
+            required
             label="Author"
             className={classes.textField}
             name="author"
             margin="normal"
-          />
-          <TextField required id="title"
+            value={newPost.author || ""}
+            onChange={(event) => this.handleChange(event, "author")} />
+          <TextField 
+            required
             label="Title"
             name="title"
             className={classes.textField}
             margin="normal"
-          />
-          <TextField required multiline id="content"  
+            value={newPost.title || ""}
+            onChange={(event) =>this.handleChange(event, "title")} />
+          <TextField 
+            required 
+            multiline
             label="Content"
             name="body"
-            rowsMax="4"
             className={classes.textField}
             margin="normal"
-          />
+            value={newPost.body || ""}
+            onChange={(event) => this.handleChange(event, "body")} />
         </FormControl>
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="category-post">Category</InputLabel>
-          <Select value={category}
+          <InputLabel>Category</InputLabel>
+          <Select value={newPost.category || ""}
                   name="category"
-                  onChange={this.handleChooseCategory}
+                  onChange={(event) => this.handleChooseCategory(event, "category")}
                   required>
             { categories.map( category => (
               <MenuItem key={category.id} value={category.name}>{category.name}</MenuItem>
@@ -97,7 +134,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = ({
-  fetchNewPost
+  fetchNewPost,
+  fetchUpdatePost
 });
 
 FormPost.propTypes = {

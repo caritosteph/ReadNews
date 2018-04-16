@@ -6,3 +6,4 @@ export const POST_DETAIL = "POST_DETAIL";
 export const ALL_COMMENTS = "ALL_COMMENTS";
 export const DELETE_POST = "DELETE_POST";
 export const VOTE_POST = "VOTE_POST";
+export const UPDATE_POST = "UPDATE_POST";

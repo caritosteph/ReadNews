@@ -100,8 +100,9 @@ class Dashboard extends Component {
                 </Button>
               </Grid>
           </Grid>
-          <NewPost open={newPost}
-                   handleCloseNewPost={this.handleCloseNewPost}/>
+          <NewPost 
+            open={newPost}
+            handleCloseNewPost={this.handleCloseNewPost}/>
       </Grid> 
     );
   }

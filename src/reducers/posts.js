@@ -1,4 +1,5 @@
-import { ALL_POST, SORT_POST, ADD_POST, DELETE_POST, VOTE_POST } from '../actions/constantTypes';
+import { ALL_POST, SORT_POST, ADD_POST, 
+         DELETE_POST, VOTE_POST, UPDATE_POST } from '../actions/constantTypes';
 
 const initialState = {
   sortby: "-timestamp"
@@ -35,6 +36,11 @@ function posts(state = initialState, action) {
       return {
         ...state,
         posts: state.posts.map(post => post.id === newPost.id ? {...post,  voteScore: newPost.voteScore } : post)
+      } 
+    case UPDATE_POST:
+      return {
+        ...state,
+        posts: state.posts.map(post => post.id === newPost.id ? newPost : post)
       }  
     default:
       return state;
