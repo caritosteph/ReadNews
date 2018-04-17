@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
+import { CardActions } from 'material-ui/Card';
 import PostActions from '../../common/PostActions';
 import { postsDetails } from '../../../utils/api'
 import { formatDate } from '../../../utils'
@@ -60,9 +61,14 @@ class PostDetail extends Component {
           <Typography variant="body1" gutterBottom>
             {post.body}
           </Typography>
-          <PostActions 
-            commentCount={post.commentCount} 
-            voteScore={post.voteScore}/>
+          <CardActions 
+            className={classes.cardActions}
+            disableActionSpacing>
+            <PostActions 
+              postId={post.id}
+              commentCount={post.commentCount} 
+              voteScore={post.voteScore}/>
+          </CardActions>
           <Comments postId={id} />
         </Grid>
       </Grid>

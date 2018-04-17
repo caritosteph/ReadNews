@@ -18,8 +18,7 @@ const Comment = ({ classes, comment }) => {
         elevation={1}>
       <CardHeader
         avatar={
-          <Avatar 
-            className={classes.avatar}>
+          <Avatar>
             <Person />
           </Avatar>
         }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { fetchAllComments } from '../../../actions/comments.js';
 import Comment from './Comment';
+import NewComment from './NewComment';
 
 class Comments extends Component {
 
@@ -17,6 +18,7 @@ class Comments extends Component {
 
     return (
       <Fragment>
+        <NewComment />
         { comments.map(comment => (
             <Comment 
               key={comment.id} 
@@ -37,7 +39,7 @@ const mapDispatchToProps = ({
 });
 
 Comments.propTypes = {
-  classes: PropTypes.object.isRequired
+  comments: PropTypes.array
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);

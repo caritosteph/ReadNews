@@ -64,7 +64,6 @@ export const votePost = (id, voteType) => {
 }
 
 export const updatePost = (id, values) => {
-  console.log("id, values", id, values);
   return fetch(`${API_URL}/posts/${id}`, { method: 'PUT', headers, body: JSON.stringify(values) })
           .then( response => response.json())
           .then( data => data);

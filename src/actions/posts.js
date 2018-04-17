@@ -19,11 +19,6 @@ const removePost = (postId) => ({
   postId
 });
 
-const voteScorePost = (newPost) => ({
-  type: VOTE_POST,
-  newPost
-});
-
 const editPost = (newPost) => ({
   type: UPDATE_POST,
   newPost
@@ -54,12 +49,19 @@ export const fetchDeletePost = (postId) => dispatch => {
       .then( post => dispatch(removePost(post.id)));
 };
 
-export const fetchVotePost = (postId, voteType) => dispatch => {
-  return votePost(postId, voteType)
-      .then( newPost => dispatch(voteScorePost(newPost)));
-};
-
 export const fetchUpdatePost = (postId, values) => dispatch => {
   return updatePost(postId, values)
       .then( post => dispatch(editPost(post)));
+};
+
+/*******/
+
+const voteScorePost = (newPost) => ({
+  type: VOTE_POST,
+  newPost
+});
+
+export const fetchVotePost = (postId, voteType) => dispatch => {
+  return votePost(postId, voteType)
+      .then( newPost => dispatch(voteScorePost(newPost)));
 };

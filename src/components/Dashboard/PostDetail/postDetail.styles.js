@@ -13,10 +13,12 @@ const styles = theme => ({
     paddingTop: 20,
     paddingBottom: 20,
     alignItem: 'center',
-    //justifyContent: 'center'
   },
   detail: {
     paddingLeft: 25
+  },
+  cardActions: {
+    display: 'flex'
   }
 });
 
