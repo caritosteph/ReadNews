@@ -14,11 +14,12 @@ class Comments extends Component {
 
   render(){
 
-    const { comments } = this.props;
+    const { comments, postId } = this.props;
 
     return (
       <Fragment>
-        <NewComment />
+        <NewComment 
+          postId={postId} />
         { comments.map(comment => (
             <Comment 
               key={comment.id} 

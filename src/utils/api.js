@@ -76,5 +76,11 @@ export const updatePost = (id, values) => {
 export const getAllComments = (id) => {
   return fetch(`${API_URL}/posts/${id}/comments`, { method: 'GET', headers })
           .then( response => response.json())
+          .then( data => data.reverse());
+}
+
+export const createNewComment = (comment) => {
+  return fetch(`${API_URL}/comments`, { method: 'POST', headers, body: JSON.stringify(comment) })
+          .then( response => response.json())
           .then( data => data);
 }
