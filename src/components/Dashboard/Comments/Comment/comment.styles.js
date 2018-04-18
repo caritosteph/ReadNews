@@ -21,14 +21,6 @@ const styles = theme => ({
   },
   authorAvatar: {
     backgroundColor: theme.palette.secondary.main
-  },
-  cardActions: {
-    justifyContent: "center"
-  },
-  bottomNavigation: {
-    flexDirection: 'row',
-    justifyContent: "space-evenly"
-
   }
 });
 

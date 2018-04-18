@@ -11,6 +11,7 @@ import Delete from 'material-ui-icons/Delete';
 import IconButton from 'material-ui/IconButton';
 import Grid from 'material-ui/Grid';
 import { fetchDeletePost, fetchVotePost } from '../../../actions/posts.js';
+import { fetchVoteComment } from '../../../actions/comments.js';
 import styles from './postAction.styles';
 
 class PostActions extends Component {
@@ -21,12 +22,16 @@ class PostActions extends Component {
   }
 
   voteScore = (voteType) => {
-    const  { fetchVotePost, postId } = this.props;
-    fetchVotePost(postId, voteType);
+    const  { fetchVotePost, fetchVoteComment,  postId, isComment } = this.props;
+    if(isComment) {
+      fetchVoteComment(postId, voteType)
+    } else {
+      fetchVotePost(postId, voteType);
+    }
   }
 
   render() {
-    const { classes, commentCount, voteScore, postId } = this.props;
+    const { classes, commentCount, voteScore, postId, isComment } = this.props;
 
     return (
       <Fragment>
@@ -35,7 +40,7 @@ class PostActions extends Component {
           onClick={this.deletePost}>
           <Delete />
         </IconButton>
-        <Grid container spacing={0} justify="center" alignItems="center">
+        <Grid container spacing={0} justify={isComment ? "flex-end" : "center"} alignItems="center">
           <IconButton 
             className={classes.iconButton}
             onClick={() => this.voteScore("upVote")}>
@@ -48,13 +53,17 @@ class PostActions extends Component {
             <ThumbDown />
           </IconButton>
         </Grid>
-        <IconButton 
-          component={Link}
-          to={`/posts/${postId}`}
-          className={classes.iconButton}>
-          <InsertComment /> 
-        </IconButton>
-        { commentCount }
+        { commentCount &&
+          <Fragment>
+            <IconButton 
+              component={Link}
+              to={`/posts/${postId}`}
+              className={classes.iconButton}>
+              <InsertComment /> 
+            </IconButton>
+            { commentCount }
+          </Fragment>
+        }
       </Fragment>
     );
   }
@@ -62,7 +71,8 @@ class PostActions extends Component {
 
 const mapDispatchToProps = ({
   fetchDeletePost,
-  fetchVotePost
+  fetchVotePost,
+  fetchVoteComment
 });
 
 PostActions.propTypes = {

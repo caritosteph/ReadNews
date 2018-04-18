@@ -54,8 +54,6 @@ export const fetchUpdatePost = (postId, values) => dispatch => {
       .then( post => dispatch(editPost(post)));
 };
 
-/*******/
-
 const voteScorePost = (newPost) => ({
   type: VOTE_POST,
   newPost

@@ -84,3 +84,9 @@ export const createNewComment = (comment) => {
           .then( response => response.json())
           .then( data => data);
 }
+
+export const voteComment = (id, voteType) => {
+  return fetch(`${API_URL}/comments/${id}`, { method: 'POST', headers, body: JSON.stringify({option: voteType}) })
+          .then( response => response.json())
+          .then( data => data);
+}

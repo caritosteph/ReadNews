@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+import { compose } from 'redux';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
@@ -25,7 +27,18 @@ class PostDetail extends Component {
     const { match } = this.props;
     const id = match.params.id;
     postsDetails(id)
-      .then( post => this.setState({ post }))
+      .then( post => {
+        console.log("post: ", post)
+        this.setState({ post })
+      })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { posts } = this.props;
+
+    if(nextProps.posts !== posts) {
+      this.setState({ post: nextProps.posts[0]});
+    }
   }
 
   render() {
@@ -67,7 +80,7 @@ class PostDetail extends Component {
             <PostActions 
               postId={post.id}
               commentCount={post.commentCount} 
-              voteScore={post.voteScore}/>
+              voteScore={post.voteScore} />
           </CardActions>
           <Comments postId={id} />
         </Grid>
@@ -77,8 +90,15 @@ class PostDetail extends Component {
   }
 };
 
+const mapStateToProps = (state) => ({
+  posts: state.posts.posts
+});
+
 PostDetail.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PostDetail);
+export default compose(
+  connect(mapStateToProps, null),
+  withStyles(styles)
+)(PostDetail);

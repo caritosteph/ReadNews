@@ -4,11 +4,11 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardHeader, CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui-icons/MoreVert';
 import Person from 'material-ui-icons/Person';
 import Avatar from 'material-ui/Avatar';
 import { formatDate } from '../../../../utils';
 import PostActions from '../../../common/PostActions';
+import Create from 'material-ui-icons/Create';
 import styles from './comment.styles';
 
 const Comment = ({ classes, comment }) => {
@@ -23,8 +23,10 @@ const Comment = ({ classes, comment }) => {
           </Avatar>
         }
         action={
-          <IconButton>
-            <MoreVertIcon />
+          <IconButton
+           // onClick={() => handleEditPost(post)}
+           >
+             <Create />
           </IconButton>
         }
         title={comment.author}
@@ -35,10 +37,11 @@ const Comment = ({ classes, comment }) => {
           {comment.body}
         </Typography>
       </CardContent>
-      <CardActions 
-        className={classes.actions} 
-        disableActionSpacing>
-        <PostActions />
+      <CardActions>
+        <PostActions 
+              isComment={true}
+              postId={comment.id}
+              voteScore={comment.voteScore}/>
       </CardActions>
     </Card>
   );
