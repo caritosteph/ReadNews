@@ -8,8 +8,8 @@ import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import styles from './formComment.styles';
 
-const FormComment = ({ classes, addNewComment }) => (
-  <form id="commentForm" onSubmit={addNewComment}>
+const FormComment = ({ classes, addNewComment, newComment, handleChange }) => (
+  <form onSubmit={addNewComment}>
     <Card elevation={4}
       className={classes.card}>
       <CardHeader
@@ -20,18 +20,25 @@ const FormComment = ({ classes, addNewComment }) => (
         }
         title={<TextField
             fullWidth
+            required
             placeholder="Write your name"
             name="author"
+            autoFocus
+            value={newComment.author || ""}
+            onChange={(event) => handleChange(event, "author")}
             className={classes.textField}
             margin="normal" />}
       />
       <CardContent>
          <TextField
             fullWidth
+            required
             multiline
             rowsMax="4"
             placeholder="Write a comment"
             name="body"
+            value={newComment.body || ""}
+            onChange={(event) => handleChange(event, "body")}
             className={classes.textField}
             margin="normal" />
       </CardContent>

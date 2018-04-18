@@ -24,6 +24,12 @@ const editPost = (newPost) => ({
   newPost
 });
 
+
+const voteScorePost = (newPost) => ({
+  type: VOTE_POST,
+  newPost
+});
+
 export const sortPost = (sortby) => ({
     type: SORT_POST,
     sortby
@@ -54,10 +60,7 @@ export const fetchUpdatePost = (postId, values) => dispatch => {
       .then( post => dispatch(editPost(post)));
 };
 
-const voteScorePost = (newPost) => ({
-  type: VOTE_POST,
-  newPost
-});
+
 
 export const fetchVotePost = (postId, voteType) => dispatch => {
   return votePost(postId, voteType)

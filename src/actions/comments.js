@@ -1,5 +1,5 @@
-import { ALL_COMMENTS, ADD_COMMENT, VOTE_COMMENT } from './constantTypes';
-import { getAllComments, createNewComment, voteComment } from '../utils/api';
+import { ALL_COMMENTS, ADD_COMMENT, UPDATE_COMMENT } from './constantTypes';
+import { getAllComments, createNewComment, voteComment, deleteComment, updateComment } from '../utils/api';
 
 const allComments = (comments) =>  ({
   type: ALL_COMMENTS,
@@ -11,8 +11,8 @@ const addComment = (comment) => ({
   comment
 });
 
-const voteScoreComment = (comment) => ({
-  type: VOTE_COMMENT,
+const editComment = (comment) => ({
+  type: UPDATE_COMMENT,
   comment
 });
 
@@ -28,5 +28,15 @@ export const fetchNewComment = (comment) => dispatch => {
 
 export const fetchVoteComment = (commentId, voteType) => dispatch => {
   return voteComment(commentId, voteType)
-      .then( comment => dispatch(voteScoreComment(comment)));
+      .then( comment => dispatch(editComment(comment)));
+};
+
+export const fetchDeleteComment = (commentId) => dispatch => {
+  return deleteComment(commentId)
+      .then( comment => dispatch(editComment(comment)));
+};
+
+export const fetchUpdatePost = (commentId, values) => dispatch => {
+  return updateComment(commentId, values)
+      .then( comment => dispatch(editComment(comment)));
 };

@@ -1,4 +1,4 @@
-import { ALL_COMMENTS, ADD_COMMENT, VOTE_COMMENT } from '../actions/constantTypes';
+import { ALL_COMMENTS, ADD_COMMENT, UPDATE_COMMENT } from '../actions/constantTypes';
 
 const initialState = {
   comments: []
@@ -21,11 +21,11 @@ function comments(state = initialState, action) {
           ...state.comments
         ]
       };
-    case VOTE_COMMENT:
+    case UPDATE_COMMENT:
       return {
         ...state,
-        comments: state.comments.map(item => item.id === comment.id ? {...item,  voteScore: comment.voteScore } : item)
-      }
+        comments: state.comments.map(item => item.id === comment.id ? comment : item)
+      } 
     default:
       return state;
   }

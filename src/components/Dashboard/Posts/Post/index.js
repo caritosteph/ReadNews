@@ -12,7 +12,7 @@ import IconButton from 'material-ui/IconButton';
 import Create from 'material-ui-icons/Create';
 import styles from './post.styles';
 
-const Post = ({ classes, post, value, handleEditPost }) => {
+const Post = ({ classes, post, value, editPost }) => {
   return (
       <Grid item xs={3} sm={3}>
         <Card elevation={0}
@@ -21,7 +21,7 @@ const Post = ({ classes, post, value, handleEditPost }) => {
             className={classes.cardTitle} 
             action={
               <IconButton
-                onClick={() => handleEditPost(post)}>
+                onClick={() => editPost(post)}>
                 <Create />
               </IconButton>
             }

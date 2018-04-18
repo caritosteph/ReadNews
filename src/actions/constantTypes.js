@@ -9,4 +9,5 @@ export const VOTE_POST = "VOTE_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const VOTE_COMMENT = "VOTE_COMMENT";
-
+export const DELETE_COMMENT = "DELETE_COMMENT";
+export const UPDATE_COMMENT = "UPDATE_COMMENT";

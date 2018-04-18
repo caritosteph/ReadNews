@@ -27,7 +27,7 @@ class Posts extends Component {
     }
   }
 
-  handleEditPost = (post) => {
+  editPost = (post) => {
     this.setState({ 
       editPost: true,
       post
@@ -50,7 +50,7 @@ class Posts extends Component {
               !post.deleted && <Post 
                                   key={post.id} 
                                   post={post}
-                                  handleEditPost={this.handleEditPost} />
+                                  editPost={this.editPost} />
           ))
         }
         <NewPost 

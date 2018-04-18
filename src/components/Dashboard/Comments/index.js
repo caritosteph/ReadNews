@@ -7,6 +7,22 @@ import NewComment from './NewComment';
 
 class Comments extends Component {
 
+  state = {
+    isEdit: false
+  }
+
+  editComment = () => {
+    this.setState({
+      isEdit: true
+    })
+  }
+
+  finishEdition = () => {
+    this.setState({
+      isEdit: false
+    })
+  }
+
   componentDidMount() {
     const { fetchAllComments, postId } = this.props;
     fetchAllComments(postId);
@@ -15,15 +31,20 @@ class Comments extends Component {
   render(){
 
     const { comments, postId } = this.props;
+    const { isEdit } = this.state;
 
     return (
       <Fragment>
         <NewComment 
           postId={postId} />
         { comments.map(comment => (
+            !comment.deleted && 
             <Comment 
               key={comment.id} 
-              comment={comment} />
+              comment={comment}
+              isEdit={isEdit}
+              editComment={this.editComment}
+              finishEdition={this.finishEdition} />
           )) 
         }
       </Fragment>

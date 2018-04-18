@@ -11,14 +11,18 @@ import Delete from 'material-ui-icons/Delete';
 import IconButton from 'material-ui/IconButton';
 import Grid from 'material-ui/Grid';
 import { fetchDeletePost, fetchVotePost } from '../../../actions/posts.js';
-import { fetchVoteComment } from '../../../actions/comments.js';
+import { fetchDeleteComment, fetchVoteComment } from '../../../actions/comments.js';
 import styles from './postAction.styles';
 
 class PostActions extends Component {
 
   deletePost = () => {
-    const { fetchDeletePost, postId } = this.props;
-    fetchDeletePost(postId);
+    const { fetchDeletePost, postId, isComment, fetchDeleteComment } = this.props;
+    if(isComment) {
+      fetchDeleteComment(postId);
+    } else {
+      fetchDeletePost(postId);
+    }
   }
 
   voteScore = (voteType) => {
@@ -72,7 +76,8 @@ class PostActions extends Component {
 const mapDispatchToProps = ({
   fetchDeletePost,
   fetchVotePost,
-  fetchVoteComment
+  fetchVoteComment,
+  fetchDeleteComment
 });
 
 PostActions.propTypes = {

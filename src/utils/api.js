@@ -90,3 +90,15 @@ export const voteComment = (id, voteType) => {
           .then( response => response.json())
           .then( data => data);
 }
+
+export const deleteComment = (id) => {
+  return fetch(`${API_URL}/comments/${id}`, { method: 'DELETE', headers })
+          .then( response => response.json())
+          .then( data => data);
+}
+
+export const updateComment = (id, values) => {
+  return fetch(`${API_URL}/comments/${id}`, { method: 'PUT', headers, body: JSON.stringify(values) })
+          .then( response => response.json())
+          .then( data => data);
+}

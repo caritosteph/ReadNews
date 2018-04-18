@@ -28,7 +28,6 @@ class PostDetail extends Component {
     const id = match.params.id;
     postsDetails(id)
       .then( post => {
-        console.log("post: ", post)
         this.setState({ post })
       })
   }
