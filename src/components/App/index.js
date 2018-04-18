@@ -6,7 +6,6 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Header />
         <Routes />
       </Fragment>
     );
