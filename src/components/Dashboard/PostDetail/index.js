@@ -57,7 +57,7 @@ class PostDetail extends Component {
           <Toolbar>
             <IconButton 
               component={Link}
-              to="/posts"
+              to="/"
               color="inherit">
               <ArrowBack />
             </IconButton>

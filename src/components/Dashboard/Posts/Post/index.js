@@ -29,12 +29,12 @@ const Post = ({ classes, post, value, editPost }) => {
                 className={classes.cardTitle} 
                 variant="title" 
                 component={Link}
-                to={`/posts/${post.id}`}>
+                to={`/${post.category}/${post.id}`}>
                 {post.title}
               </Typography>}
           />
           <CardContent>
-            <Link to={`/posts/${post.id}`}
+            <Link to={`/${post.category}/${post.id}`}
               className={classes.cardcontent}>
               <Typography 
                 color="textSecondary">

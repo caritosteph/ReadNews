@@ -39,11 +39,13 @@ class Dashboard extends Component {
   }
 
   handleNewPost = () => {
-    this.setState({ newPost: true })
+    this.setState({ newPost: true });
   }
 
   handleCloseNewPost = () => {
-    this.setState({ newPost: false })
+    const { history } = this.props;
+    this.setState({ newPost: false, activeTab: 0 });
+    history.push("/");
   }
 
   render(){
