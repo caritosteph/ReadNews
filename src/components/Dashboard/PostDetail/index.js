@@ -40,10 +40,10 @@ class PostDetail extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { posts } = this.props;
+    const { posts, comments } = this.props;
 
-    if(nextProps.posts !== posts) {
-      this.setState({ post: nextProps.posts[0]});
+    if(nextProps.posts !== posts || nextProps.comments  !== comments) {
+      this.getPostDetail();
     }
   }
 
@@ -121,7 +121,8 @@ class PostDetail extends Component {
 };
 
 const mapStateToProps = (state) => ({
-  posts: state.posts.posts
+  posts: state.posts.posts,
+  comments: state.comments.comments
 });
 
 PostDetail.propTypes = {

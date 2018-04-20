@@ -15,6 +15,7 @@ import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import NewPost from './NewPost';
+import Categories from './Categories';
 import Header from '../common/Header';
 import { fetchAllCategories } from '../../actions/categories';
 
@@ -64,29 +65,7 @@ class Dashboard extends Component {
                     Categories
                 </Typography>
               </Grid>
-
-              <Tabs value={activeTab}
-                    textColor="primary"
-                    onChange={this.handleTabChange}
-                    indicatorColor="none"
-                    classes= {{
-                      flexContainer: classes.tabsCategories
-                    }}>
-                    <Tab label="All"
-                         className={activeTab  === 0 ? classes.activeTab : ""}
-                         component={Link}
-                         to="all"
-                         value={0} />
-                   { categories && categories.map( category => (
-                       <Tab key={category.id}
-                                   label={category.name}
-                                   className={activeTab  === category.id ? classes.activeTab : ""}
-                                   component={Link}
-                                   to={`${category.path}`}
-                                   value={category.id} />
-                     ))
-                    }
-              </Tabs>
+              <Categories />
             </Grid>
             <Grid item xs={10} className={classes.postsContainer}>
                 <Grid container spacing={0} justify="flex-end">
@@ -96,8 +75,6 @@ class Dashboard extends Component {
                 <Posts  category={category} />
                 <Grid container spacing={0} justify="center">
                   <Button 
-                    //component={Link}
-                    //to="/posts/newPost"
                     variant="fab"
                     color="primary"
                     onClick={this.handleNewPost}>

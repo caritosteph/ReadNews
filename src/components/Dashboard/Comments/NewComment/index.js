@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import serializeForm from 'form-serialize';
 import FormComment from './FormComment';
-import { fetchNewComment, fetchUpdatePost } from  '../../../../actions/comments.js';
+import { fetchNewComment, fetchUpdateComment } from  '../../../../actions/comments.js';
 import cuid from 'cuid';
 
 class NewComment extends Component {
@@ -13,7 +13,8 @@ class NewComment extends Component {
 
   addNewComment = (event)  => {
     event.preventDefault();
-    const { fetchNewComment, postId, comment, fetchUpdatePost, finishEdition } = this.props;
+    const { fetchNewComment, postId, comment, fetchUpdateComment, 
+            finishEdition } = this.props;
     const form = serializeForm(event.target, {hash:true})
     const values = {
       id: cuid(),
@@ -22,7 +23,7 @@ class NewComment extends Component {
       ...form
     }
     if(comment) {
-      fetchUpdatePost(comment.id, {
+      fetchUpdateComment(comment.id, {
         ...form,
         timestamp: (new Date()).getTime()
       });
@@ -69,7 +70,7 @@ class NewComment extends Component {
 
 const mapDispatchToProps = ({
   fetchNewComment,
-  fetchUpdatePost
+  fetchUpdateComment
 });
 
 export default connect(null, mapDispatchToProps)(NewComment);

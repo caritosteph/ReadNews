@@ -8,9 +8,9 @@ const allPosts = (posts) =>  ({
   posts
 });
 
-const addPost = (post) => ({
+const addPost = (newPost) => ({
   type: ADD_POST,
-  post
+  newPost
 });
 
 const editPost = (post) => ({
@@ -35,7 +35,7 @@ export const fetchAllPost = (category) => dispatch => {
 
 export const fetchNewPost = (post) => dispatch => {
   return createNewPost(post)
-      .then( post => dispatch(addPost(post)));
+      .then( newPost => dispatch(addPost(newPost)));
 };
 
 export const fetchDeletePost = (postId) => dispatch => {
@@ -48,9 +48,11 @@ export const fetchUpdatePost = (postId, values) => dispatch => {
       .then( post => dispatch(editPost(post)));
 };
 
-
-
 export const fetchVotePost = (postId, voteType) => dispatch => {
+  console.log("fetchVotePost:", postId)
   return votePost(postId, voteType)
-      .then( post => dispatch(editPost(post)));
+      .then( post => {
+        console.log("vote response:", post)
+        dispatch(editPost(post))
+      });
 };

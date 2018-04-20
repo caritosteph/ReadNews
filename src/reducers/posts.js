@@ -5,7 +5,7 @@ const initialState = {
 }
 
 function posts(state = initialState, action) {
-  const { posts, sortby, post, postId } = action;
+  const { posts, sortby, newPost, post } = action;
 
   switch (action.type) {
     case ALL_POST:
@@ -23,14 +23,14 @@ function posts(state = initialState, action) {
         ...state,
         posts: [
           ...state.posts,
-          post
+          newPost
         ]
       }
     case UPDATE_POST:
       return {
         ...state,
         posts: state.posts.map(item => item.id === post.id ? post : item)
-      }  
+      }
     default:
       return state;
   }

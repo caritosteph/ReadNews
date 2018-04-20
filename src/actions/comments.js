@@ -36,7 +36,7 @@ export const fetchDeleteComment = (commentId) => dispatch => {
       .then( comment => dispatch(editComment(comment)));
 };
 
-export const fetchUpdatePost = (commentId, values) => dispatch => {
+export const fetchUpdateComment = (commentId, values) => dispatch => {
   return updateComment(commentId, values)
       .then( comment => dispatch(editComment(comment)));
 };

@@ -17,7 +17,8 @@ import styles from './postAction.styles';
 class PostActions extends Component {
 
   deletePost = () => {
-    const { fetchDeletePost, postId, isComment, fetchDeleteComment } = this.props;
+    const { fetchDeletePost, postId, isComment,
+            fetchDeleteComment } = this.props;
     if(isComment) {
       fetchDeleteComment(postId);
     } else {
@@ -57,7 +58,7 @@ class PostActions extends Component {
             <ThumbDown />
           </IconButton>
         </Grid>
-        { commentCount &&
+        { commentCount >= 0 &&
           <Fragment>
             <IconButton 
               component={Link}
