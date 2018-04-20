@@ -45,8 +45,7 @@ const Comment = ({ classes, comment, editComment, isEdit, finishEdition }) => {
           <CardActions>
             <PostActions 
                   isComment={true}
-                  postId={comment.id}
-                  voteScore={comment.voteScore}/>
+                  post={comment} />
           </CardActions>
         </Card>
       }

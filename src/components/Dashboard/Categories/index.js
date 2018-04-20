@@ -22,6 +22,15 @@ class Categories extends Component {
     fetchAllCategories();
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { categories, category } = this.props;
+
+    if( nextProps.categories !== categories) {
+      const positionCategory = nextProps.categories.map(category => category.name).indexOf(category)
+      if(category) this.setState({ activeTab: positionCategory + 1 })
+    }
+  }
+
   render(){
 
     const { activeTab } = this.state;

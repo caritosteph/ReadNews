@@ -67,9 +67,7 @@ const Post = ({ classes, post, value, editPost }) => {
             className={classes.cardActions}
             disableActionSpacing>
             <PostActions 
-              postId={post.id}
-              commentCount={post.commentCount} 
-              voteScore={post.voteScore}/>
+              post={post} />
           </CardActions>
         </Card>
       </Grid>

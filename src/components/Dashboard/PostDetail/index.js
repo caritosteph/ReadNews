@@ -53,7 +53,6 @@ class PostDetail extends Component {
     const { post } = this.state;
     const id = match.params.id;
 
-    console.log("post: ", post)
     return (
       <Fragment>
       { !emptyObject(post) ?
@@ -62,7 +61,7 @@ class PostDetail extends Component {
               <Toolbar>
                 <IconButton 
                   component={Link}
-                  to="/"
+                  to={`/${post.category}`}
                   color="inherit">
                   <ArrowBack />
                 </IconButton>
@@ -105,9 +104,7 @@ class PostDetail extends Component {
                   className={classes.cardActions}
                   disableActionSpacing>
                   <PostActions 
-                    postId={post.id}
-                    commentCount={post.commentCount} 
-                    voteScore={post.voteScore} />
+                    post={post} />
                 </CardActions>
                 <Comments postId={id} />
               </Grid>

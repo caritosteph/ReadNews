@@ -15,8 +15,8 @@ class Posts extends Component {
   };
 
   componentDidMount = () => {
-    const { fetchAllPost } = this.props;
-    fetchAllPost();
+    const { fetchAllPost, category } = this.props;
+    fetchAllPost(category);
   }
 
   componentWillReceiveProps = (nextProps) => {

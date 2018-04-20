@@ -17,26 +17,26 @@ import styles from './postAction.styles';
 class PostActions extends Component {
 
   deletePost = () => {
-    const { fetchDeletePost, postId, isComment,
+    const { fetchDeletePost, post, isComment,
             fetchDeleteComment } = this.props;
     if(isComment) {
-      fetchDeleteComment(postId);
+      fetchDeleteComment(post.id);
     } else {
-      fetchDeletePost(postId);
+      fetchDeletePost(post.id);
     }
   }
 
   voteScore = (voteType) => {
-    const  { fetchVotePost, fetchVoteComment,  postId, isComment } = this.props;
+    const  { fetchVotePost, fetchVoteComment,  post, isComment } = this.props;
     if(isComment) {
-      fetchVoteComment(postId, voteType)
+      fetchVoteComment(post.id, voteType)
     } else {
-      fetchVotePost(postId, voteType);
+      fetchVotePost(post.id, voteType);
     }
   }
 
   render() {
-    const { classes, commentCount, voteScore, postId, isComment } = this.props;
+    const { classes, post, isComment } = this.props;
 
     return (
       <Fragment>
@@ -51,22 +51,22 @@ class PostActions extends Component {
             onClick={() => this.voteScore("upVote")}>
             <ThumbUp />
           </IconButton>
-          { voteScore }
+          { post.voteScore }
           <IconButton 
             className={classes.iconButton}
             onClick={() => this.voteScore("downVote")}>
             <ThumbDown />
           </IconButton>
         </Grid>
-        { commentCount >= 0 &&
+        { post.commentCount >= 0 &&
           <Fragment>
             <IconButton 
               component={Link}
-              to={`/posts/${postId}`}
+              to={`/${post.category}/${post.id}`}
               className={classes.iconButton}>
               <InsertComment /> 
             </IconButton>
-            { commentCount }
+            { post.commentCount }
           </Fragment>
         }
       </Fragment>

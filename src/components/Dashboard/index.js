@@ -17,22 +17,11 @@ import AddIcon from 'material-ui-icons/Add';
 import NewPost from './NewPost';
 import Categories from './Categories';
 import Header from '../common/Header';
-import { fetchAllCategories } from '../../actions/categories';
 
 class Dashboard extends Component {
   state = {
-    activeTab: 0,
     newPost: false
   };
-
-  handleTabChange = (event, activeTab) => {
-    this.setState({ activeTab });
-  }
-
-  componentDidMount = () => {
-    const { fetchAllCategories } = this.props;
-    fetchAllCategories();
-  }
 
   handleSortPost = (sortby) => {
     const { sortPost } = this.props;
@@ -51,8 +40,8 @@ class Dashboard extends Component {
 
   render(){
 
-    const { activeTab, newPost } = this.state;
-    const { classes, match, categories } = this.props;
+    const { newPost } = this.state;
+    const { classes, match } = this.props;
     const category = match.params.category
 
     return (
@@ -65,14 +54,14 @@ class Dashboard extends Component {
                     Categories
                 </Typography>
               </Grid>
-              <Categories />
+              <Categories category ={category} />
             </Grid>
             <Grid item xs={10} className={classes.postsContainer}>
                 <Grid container spacing={0} justify="flex-end">
                   <SortPost handleSortPost={this.handleSortPost} />
                 </Grid>
                 <Divider classes={{ root: classes.divider}} />
-                <Posts  category={category} />
+                <Posts category={category} />
                 <Grid container spacing={0} justify="center">
                   <Button 
                     variant="fab"
@@ -91,13 +80,8 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  categories: state.categories.categories
-})
-
 const mapDispatchToProps = ({
-  sortPost,
-  fetchAllCategories
+  sortPost
 });
 
 Dashboard.propTypes = {
@@ -105,6 +89,6 @@ Dashboard.propTypes = {
 };
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(null, mapDispatchToProps),
   withStyles(styles)
 )(Dashboard);
