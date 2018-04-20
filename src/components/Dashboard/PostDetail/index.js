@@ -18,6 +18,7 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import NotFound from '../../common/NotFound';
 import { emptyObject } from '../../../utils';
+import { fetchAllPost } from '../../../actions/posts';
 import styles from './postDetail.styles';
 
 class PostDetail extends Component {
@@ -27,7 +28,9 @@ class PostDetail extends Component {
   }
 
   componentDidMount() {
+    const { fetchAllPost } = this.props;
     this.getPostDetail();
+    fetchAllPost(); //  when user load page direct to details
   }
 
   getPostDetail = () => {
@@ -122,11 +125,15 @@ const mapStateToProps = (state) => ({
   comments: state.comments.comments
 });
 
+const mapDispatchToProps = ({
+  fetchAllPost
+});
+
 PostDetail.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 export default compose(
-  connect(mapStateToProps, null),
+  connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles)
 )(PostDetail);

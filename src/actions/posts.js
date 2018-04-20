@@ -49,10 +49,6 @@ export const fetchUpdatePost = (postId, values) => dispatch => {
 };
 
 export const fetchVotePost = (postId, voteType) => dispatch => {
-  console.log("fetchVotePost:", postId)
   return votePost(postId, voteType)
-      .then( post => {
-        console.log("vote response:", post)
-        dispatch(editPost(post))
-      });
+      .then( post => dispatch(editPost(post)));
 };

@@ -37,7 +37,8 @@ const Comment = ({ classes, comment, editComment, isEdit, finishEdition, comment
           subheader={formatDate(comment.timestamp)}
         />
         <CardContent>
-          <Typography component="p">
+          <Typography 
+            className={classes.body}>
             {comment.body}
           </Typography>
         </CardContent>

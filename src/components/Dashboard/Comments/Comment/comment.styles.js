@@ -21,6 +21,9 @@ const styles = theme => ({
   },
   authorAvatar: {
     backgroundColor: theme.palette.secondary.main
+  },
+  body: {
+    whiteSpace: 'pre'
   }
 });
 

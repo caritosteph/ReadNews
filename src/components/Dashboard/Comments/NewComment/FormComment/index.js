@@ -26,7 +26,6 @@ const FormComment = ({ classes, addNewComment, newComment, handleChange }) => (
             autoFocus
             value={newComment.author || ""}
             onChange={(event) => handleChange(event, "author")}
-            className={classes.textField}
             margin="normal" />}
       />
       <CardContent>
@@ -39,7 +38,6 @@ const FormComment = ({ classes, addNewComment, newComment, handleChange }) => (
             name="body"
             value={newComment.body || ""}
             onChange={(event) => handleChange(event, "body")}
-            className={classes.textField}
             margin="normal" />
       </CardContent>
       <CardActions 
