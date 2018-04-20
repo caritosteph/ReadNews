@@ -2,11 +2,9 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import { sortPost } from '../../actions/posts';
 import Grid from 'material-ui/Grid';
-import Tabs, { Tab } from 'material-ui/Tabs';
 import styles from './dashboard.styles';
 import Typography from 'material-ui/Typography';
 import Posts from './Posts';
@@ -37,7 +35,6 @@ class Dashboard extends Component {
     this.setState({ newPost: false, activeTab: 0 });
     history.push("/");
   }
-
   render(){
 
     const { newPost } = this.state;

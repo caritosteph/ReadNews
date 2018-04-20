@@ -28,7 +28,7 @@ class Comments extends Component {
   }
 
   componentDidMount() {
-    const { fetchAllComments, postId, commentId } = this.props;
+    const { fetchAllComments, postId } = this.props;
     fetchAllComments(postId);
   }
 
