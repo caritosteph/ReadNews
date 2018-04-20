@@ -8,30 +8,34 @@ import NewComment from './NewComment';
 class Comments extends Component {
 
   state = {
-    isEdit: false
+    isEdit: false,
+    commentId: null
   }
 
-  editComment = () => {
+  editComment = (commentId) => {
+    console.log("edit: ", commentId)
     this.setState({
-      isEdit: true
+      isEdit: true,
+      commentId
     })
   }
 
   finishEdition = () => {
     this.setState({
-      isEdit: false
+      isEdit: false,
+      commentId: null
     })
   }
 
   componentDidMount() {
-    const { fetchAllComments, postId } = this.props;
+    const { fetchAllComments, postId, commentId } = this.props;
     fetchAllComments(postId);
   }
 
   render(){
 
     const { comments, postId } = this.props;
-    const { isEdit } = this.state;
+    const { isEdit, commentId } = this.state;
 
     return (
       <Fragment>
@@ -44,7 +48,8 @@ class Comments extends Component {
               comment={comment}
               isEdit={isEdit}
               editComment={this.editComment}
-              finishEdition={this.finishEdition} />
+              finishEdition={this.finishEdition}
+              commentId={commentId} />
           )) 
         }
       </Fragment>

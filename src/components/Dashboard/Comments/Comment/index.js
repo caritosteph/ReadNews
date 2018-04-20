@@ -12,46 +12,45 @@ import Create from 'material-ui-icons/Create';
 import NewComment from '../NewComment';
 import styles from './comment.styles';
 
-const Comment = ({ classes, comment, editComment, isEdit, finishEdition }) => {
-  return (
+const Comment = ({ classes, comment, editComment, isEdit, finishEdition, commentId }) => (
     <Fragment>
-      { isEdit ?
-        <NewComment 
-            comment={comment}
-            finishEdition={finishEdition} /> :
-        <Card 
-            className={classes.card}
-            elevation={4}>
-          <CardHeader
-            avatar={
-              <Avatar>
-                <Person />
-              </Avatar>
-            }
-            action={
-              <IconButton
-                onClick={editComment}>
-                 <Create />
-              </IconButton>
-            }
-            title={comment.author}
-            subheader={formatDate(comment.timestamp)}
-          />
-          <CardContent>
-            <Typography component="p">
-              {comment.body}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <PostActions 
-                  isComment={true}
-                  post={comment} />
-          </CardActions>
-        </Card>
-      }
-    </Fragment>
-  );
-}
+    { isEdit && comment.id === commentId ?
+      <NewComment 
+          comment={comment}
+          finishEdition={finishEdition} /> :
+      <Card 
+          className={classes.card}
+          elevation={4}>
+        <CardHeader
+          avatar={
+            <Avatar>
+              <Person />
+            </Avatar>
+          }
+          action={
+            <IconButton
+              onClick={() => editComment(comment.id)}>
+               <Create />
+            </IconButton>
+          }
+          title={comment.author}
+          subheader={formatDate(comment.timestamp)}
+        />
+        <CardContent>
+          <Typography component="p">
+            {comment.body}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <PostActions 
+                isComment={true}
+                post={comment} />
+        </CardActions>
+      </Card>
+    }
+  </Fragment>
+);
+
 
 Comment.propTypes = {
   classes: PropTypes.object.isRequired
