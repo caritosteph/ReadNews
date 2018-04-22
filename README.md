@@ -7,9 +7,10 @@ ReadNews project, you will able to post and comment content, also vote on post a
 You need to have [Node](https://nodejs.org/en/download/) and [NPM](https://docs.npmjs.com/cli/install) to run the app.
 To install ReadNews follow the following steps:
  1. Clone the repository `https://github.com/caritosteph/ReadNews.git`
- 2. Install all project dependencies `npm install`
- 3. Start the development server `npm run start`
- 4. Listen the server on http://localhost:3000
+ 2. api-server folder in your terminal and install dependencies `npm install`
+ 3. ReadNews folder in your terminal and install all project dependencies `npm install`
+ 4. Start the development server `npm run start`
+ 5. Listen the server on http://localhost:3000 (frontend) , http://localhost:3000 (backend)
  
 ## Frontend
 ### Main Page
