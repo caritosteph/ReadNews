@@ -18,19 +18,24 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import NotFound from '../../common/NotFound';
 import { emptyObject } from '../../../utils';
+import Create from 'material-ui-icons/Create';
+import NewPost from '../NewPost';
 import { fetchAllPost } from '../../../actions/posts';
+import { fetchAllCategories } from '../../../actions/categories';
 import styles from './postDetail.styles';
 
 class PostDetail extends Component {
 
   state = {
-    post: ""
+    post: "",
+    edit: false
   }
 
   componentDidMount() {
-    const { fetchAllPost } = this.props;
+    const { fetchAllPost, fetchAllCategories } = this.props;
     this.getPostDetail();
-    fetchAllPost(); //  when user load page direct to details
+    fetchAllPost();
+    fetchAllCategories();
   }
 
   getPostDetail = () => {
@@ -50,10 +55,20 @@ class PostDetail extends Component {
     }
   }
 
+  editPost = (post) => {
+    this.setState({ 
+      edit: true
+    })
+  }
+
+  handleCloseEditPost = () => {
+    this.setState({ edit: false })
+  }
+
   render() {
 
     const { classes, match } = this.props;
-    const { post } = this.state;
+    const { post, edit } = this.state;
     const id = match.params.id;
 
     return (
@@ -79,24 +94,41 @@ class PostDetail extends Component {
             </AppBar>
             <Grid container spacing={0} className={classes.grid}>
               <Grid item xs={5}>
-                <Grid 
-                  container 
-                  spacing={0} 
-                  direction="row"
-                  className={classes.detailHeader}>
-                    <Avatar 
-                      classes= {{ root: classes.authorAvatar}}>
-                      {post && post.author.charAt(0).toUpperCase()}
-                    </Avatar>
-                    <Grid className={classes.detail}>
-                      <Typography color="textSecondary" variant="title" gutterBottom>
-                        {post.author}
-                      </Typography>
-                      <Typography color="textSecondary" variant="body1">
-                        {formatDate(post.timestamp)}
-                      </Typography>
-                    </Grid>   
-                </Grid>    
+                <Grid
+                    container 
+                    spacing={0} 
+                    direction="row">
+                  <Grid item xs={11}>
+                    <Grid 
+                      container 
+                      spacing={0} 
+                      direction="row"
+                      className={classes.detailHeader}>
+                      <Avatar 
+                        classes= {{ root: classes.authorAvatar}}>
+                        {post && post.author.charAt(0).toUpperCase()}
+                      </Avatar>
+                      <Grid className={classes.detail}>
+                        <Typography color="textSecondary" variant="title" gutterBottom>
+                          {post.author}
+                        </Typography>
+                        <Typography color="textSecondary" variant="body1">
+                          {formatDate(post.timestamp)}
+                        </Typography>
+                        <Typography color="textSecondary" variant="body1">
+                          Category: {post.category}
+                        </Typography>
+                      </Grid> 
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={1}>
+                        <IconButton
+                          onClick={this.editPost}>
+                          <Create />
+                        </IconButton>
+                  </Grid>  
+              </Grid>  
+
                 <Typography variant="display1" gutterBottom>
                   {post.title}
                 </Typography>
@@ -115,6 +147,10 @@ class PostDetail extends Component {
           </Fragment>
           : <NotFound />
       }
+       <NewPost 
+          post={post}
+          open={edit}
+          handleCloseNewPost={this.handleCloseEditPost} />
       </Fragment>
     )
   }
@@ -126,7 +162,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = ({
-  fetchAllPost
+  fetchAllPost,
+  fetchAllCategories
 });
 
 PostDetail.propTypes = {

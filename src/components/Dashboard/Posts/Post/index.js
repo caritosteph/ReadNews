@@ -29,7 +29,12 @@ const Post = ({ classes, post, value, editPost }) => {
                 className={classes.cardTitle} 
                 variant="title" 
                 component={Link}
-                to={`/${post.category}/${post.id}`}>
+                to={{
+                  pathname: `/${post.category}/${post.id}`,
+                  params: {
+                    edit: editPost
+                  }
+                }}>
                 {post.title}
               </Typography>}
           />

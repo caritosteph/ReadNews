@@ -19,6 +19,9 @@ const styles = theme => ({
   },
   cardActions: {
     display: 'flex'
+  },
+  edit: {
+    alignItem: 'flex-end'
   }
 });
 

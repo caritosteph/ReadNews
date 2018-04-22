@@ -18,7 +18,7 @@ import styles from './formPost.styles';
 class FormPost extends Component {
   state = {
     category: '',
-    newPost: ""
+    newPost: ''
   };
 
   handleChooseCategory = (event, input) => {
@@ -64,6 +64,7 @@ class FormPost extends Component {
 
   componentDidMount() {
     const { post } = this.props;
+    console.log("form_ ", post)
     if(post) {
       this.setState({
         newPost: {...post}
