@@ -45,8 +45,8 @@ class Dashboard extends Component {
       <Fragment>
           <Header />
           <Grid container spacing={0} className="full-height">
-            <Grid item xs={2} classes={{ typeItem: classes.gridCategories }}>
-              <Grid item classes={{ typeItem: classes.categoryTitle }}>
+            <Grid item xs={2} className={classes.gridCategories}>
+              <Grid item className={classes.categoryTitle}>
                 <Typography variant="body1" color="secondary">
                     Categories
                 </Typography>

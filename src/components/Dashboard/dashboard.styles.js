@@ -1,14 +1,8 @@
 const styles = theme => ({
   gridCategories: {
-    borderRight: `1px solid ${theme.palette.common.border}`
-  },
-  tabsCategories: {
-    flexDirection: 'column'
-  },
-  categoryTitle: {
-    height: 60,
-    padding: 20
-  },
+    borderRight: `1px solid ${theme.palette.common.border}`,
+    paddingTop: 10
+    },
   activeTab: {
     borderLeft: `5px solid ${theme.palette.primary.main}`
   },

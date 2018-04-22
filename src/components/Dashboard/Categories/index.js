@@ -40,7 +40,6 @@ class Categories extends Component {
         <Tabs value={activeTab}
               textColor="primary"
               onChange={this.handleTabChange}
-              indicatorColor="none"
               classes= {{
                 flexContainer: classes.tabsCategories
               }}>
