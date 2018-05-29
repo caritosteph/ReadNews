@@ -13,6 +13,8 @@ To install ReadNews follow the following steps:
  5. Listen the server on http://localhost:3000 (frontend) , http://localhost:3000 (backend)
  
 ## Frontend
+This project is using **ReactJS**, **Redux** and **Material-UI**
+
 ### Main Page
 - [X] Show all the categories
 - [X] Sort by votes and dates.
